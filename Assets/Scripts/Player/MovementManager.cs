@@ -13,8 +13,11 @@ public class MovementManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveSunBeam();
-        moveRainDrop();
+        if (!GameManager.paused)
+        {
+            moveSunBeam();
+            moveRainDrop();
+        }
     }
 
     void moveSunBeam() //update the sunbeams position based on input given
