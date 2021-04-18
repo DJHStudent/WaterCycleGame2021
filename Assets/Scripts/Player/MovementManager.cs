@@ -6,8 +6,6 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     float maxSpeed = 40;
-    float rainDropSpeedIntval = .3f;
-    public float rainDropSpeed = 0;
     float maxDistAway = 5;
 
     bool moving = false, moveLeft = false;
@@ -49,14 +47,10 @@ public class MovementManager : MonoBehaviour
         Vector2 rainDropPos = GameManager.rainDrop.transform.position;
         float dist = Math.Abs(transform.position.x - rainDropPos.x);//get x dist from one to the other
 
-        if (dist < 0.01 && !moving)
-            rainDropSpeed = 0;//not moving
-        else if (!moving || Math.Abs(transform.position.x) == 28.3f)//dist < maxDistAway if not too far away or currently not moving
+        if (dist > 0.01 && !moving || Math.Abs(transform.position.x) == 28.3f)//if not too close/ not moving or at one of the boarder walls
         {
-            rainDropSpeed += maxSpeed * Time.deltaTime;//increase the movement speed
-            rainDropSpeed = Mathf.Clamp(rainDropSpeed, -rainDropSpeedIntval, rainDropSpeedIntval);//clamp it between two values
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, rainDropSpeed); //move towards new position with current speed
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * Time.deltaTime); //move towards new position with current speed
         }
         else if (dist >= maxDistAway && moving)//if moving and too far away
         {
