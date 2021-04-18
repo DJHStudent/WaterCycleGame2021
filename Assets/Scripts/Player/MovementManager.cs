@@ -6,7 +6,7 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
     float maxSpeed = 40;
-    float rainDropSpeedIntval = .23f;
+    float rainDropSpeedIntval = .3f;
     public float rainDropSpeed = 0;
     float maxDistAway = 5;
 
@@ -51,7 +51,7 @@ public class MovementManager : MonoBehaviour
 
         if (dist < 0.01 && !moving)
             rainDropSpeed = 0;//not moving
-        else if (!moving)//dist < maxDistAway if not too far away or currently not moving
+        else if (!moving || Math.Abs(transform.position.x) == 28.3f)//dist < maxDistAway if not too far away or currently not moving
         {
             rainDropSpeed += maxSpeed * Time.deltaTime;//increase the movement speed
             rainDropSpeed = Mathf.Clamp(rainDropSpeed, -rainDropSpeedIntval, rainDropSpeedIntval);//clamp it between two values
