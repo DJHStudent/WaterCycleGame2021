@@ -3,10 +3,18 @@ using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
+    public int health = 1;
+
     float maxSpeed = 40;
     float maxDistAway = 5;
 
     bool moving = false, moveLeft = false;
+
+    public void updateHealth(int amount)
+    {
+        health += amount;
+        GameManager.levelUIManager.updateHealth();
+    }
 
     // Update is called once per frame
     void Update()

@@ -1,11 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatMove : MonoBehaviour
+public class RainMove : MonoBehaviour
 {
-    float speed = 20;
+    float speed = 30;
     float destroyYPos = -54;
 
     // Update is called once per frame
+    private void Start()
+    {
+        speed = Random.Range(20, 40);
+    }
     void Update()
     {
         if (!GameManager.paused)

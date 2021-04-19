@@ -3,12 +3,12 @@ using UnityEngine;
 public class PlatSpawn : MonoBehaviour
 {
     float startY = 54;
-    float spawnTime = 2;
+    float spawnTime = 3.5f;
     public GameObject wall;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawn", spawnTime, spawnTime);
+        InvokeRepeating("spawn", spawnTime*2, spawnTime);
     }
 
     // Update is called once per frame
