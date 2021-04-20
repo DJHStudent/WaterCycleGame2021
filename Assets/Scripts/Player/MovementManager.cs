@@ -74,6 +74,11 @@ public class MovementManager : MonoBehaviour
             }
             GameManager.rainDrop.transform.position = new Vector2(pos, rainDropPos.y);//ensures the raindrop never gets more then maxDistAway from the sunbeam
         }
-
+        rainLookAt();
+    }
+    void rainLookAt()
+    {
+        float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir);
     }
 }
