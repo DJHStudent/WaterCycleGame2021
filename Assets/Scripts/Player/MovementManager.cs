@@ -9,6 +9,12 @@ public class MovementManager : MonoBehaviour
     float maxDistAway = 5;
 
     bool moving = false, moveLeft = false;
+    LineRenderer lineRenderer;
+
+    private void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
 
     public void updateHealth(int amount)
     {
@@ -28,10 +34,14 @@ public class MovementManager : MonoBehaviour
 
     void moveSunBeam() //update the sunbeams position based on input given
     {
+        //update position based on key pressed
         Vector2 pos = transform.position;
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
         transform.position = pos;
+
+        //update the sunbeam
+        lineRenderer.SetPosition(1, pos);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //if currently moving
         {
@@ -55,30 +65,30 @@ public class MovementManager : MonoBehaviour
     {
         Vector2 rainDropPos = GameManager.rainDrop.transform.position;
         float dist = Math.Abs(transform.position.x - rainDropPos.x);//get x dist from one to the other
-
-        if (dist > 0.01 && !moving || Math.Abs(transform.position.x) == 28.3f)//if not too close/ not moving or at one of the boarder walls
+        //
+        if (dist > 0.01)// && !moving|| Math.Abs(transform.position.x) == 28.3f)//if not too close/ not moving or at one of the boarder walls
         {
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * Time.deltaTime); //move towards new position with current speed
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime); //move towards new position with current speed
         }
-        else if (dist >= maxDistAway && moving)//if moving and too far away
-        {
-            float pos = transform.position.x;
-            if (!moveLeft)
-            {
-                pos -= maxDistAway;
-            }
-            else
-            {
-                pos += maxDistAway;
-            }
-            GameManager.rainDrop.transform.position = new Vector2(pos, rainDropPos.y);//ensures the raindrop never gets more then maxDistAway from the sunbeam
-        }
+        //else if (dist >= maxDistAway && moving)//if moving and too far away
+        //{
+        //    float pos = transform.position.x;
+        //    if (!moveLeft)
+        //    {
+        //        pos -= maxDistAway;
+        //    }
+        //    else
+        //    {
+        //        pos += maxDistAway;
+        //    }
+        //    GameManager.rainDrop.transform.position = new Vector2(pos, rainDropPos.y);//ensures the raindrop never gets more then maxDistAway from the sunbeam
+        //}
         rainLookAt();
     }
     void rainLookAt()
     {
         float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
-        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir);
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir*2);
     }
 }
