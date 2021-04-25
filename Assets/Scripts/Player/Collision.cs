@@ -9,12 +9,13 @@ public class Collision : MonoBehaviour
         {
             GameManager.levelUIManager.deadTxt.gameObject.SetActive(true);
             GameManager.levelUIManager.restartBtn.gameObject.SetActive(true);
-            GameManager.paused = true;
-        }  
-        
+            GameManager.levelStats.paused = true;
+            Time.timeScale = 1;
+        }
+
         if (collision.gameObject.CompareTag("RainDrop"))
         {
-            GameManager.movementManager.updateHealth(1);
+            GameManager.levelStats.updateScore(1);
             Destroy(collision.gameObject);
         }
     }

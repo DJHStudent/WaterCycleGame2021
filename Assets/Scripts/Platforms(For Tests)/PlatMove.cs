@@ -9,9 +9,9 @@ public class PlatMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.paused)
+        if (!GameManager.levelStats.paused)
         {
-            transform.position = transform.position + Vector3.down * speed * Time.deltaTime;
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
             if (transform.position.y <= destroyYPos)
             {
                 Destroy(this.gameObject);

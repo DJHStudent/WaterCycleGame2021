@@ -16,7 +16,7 @@ public class RainSpawn : MonoBehaviour
     // Update is called once per frame
     void spawn()
     {
-        if (!GameManager.paused)
+        if (!GameManager.levelStats.paused)
         {
             Vector2 pos = new Vector2(Random.Range(-16, 16), Camera.main.transform.position.y + startY);
             Instantiate(raindrop, pos, Quaternion.identity);

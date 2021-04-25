@@ -5,9 +5,21 @@ public class LevelUIManager : MonoBehaviour
 {
     public Text deadTxt, healthTxt;
     public Button restartBtn;
+    public Slider heightSlider;
 
-    public void updateHealth()
+
+    public void updateHeight(float time)
     {
-        healthTxt.text = "Health: " + GameManager.movementManager.health;
+        heightSlider.value = time;
+    }
+
+    public void maxHeight(float max)
+    {
+        heightSlider.maxValue = max;
+    }
+
+    public void updateScore()
+    {
+        healthTxt.text = "Score: " + GameManager.levelStats.score;
     }
 }

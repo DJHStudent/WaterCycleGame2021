@@ -3,29 +3,22 @@ using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
-    public int health = 1;
 
     float maxSpeed = 40;
-    float maxDistAway = 5;
 
-    bool moving = false, moveLeft = false;
-    LineRenderer lineRenderer;
+    bool moving = false;
+    LineRenderer sunLineRenderer, rainLineRenderer;
 
     private void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
-
-    public void updateHealth(int amount)
-    {
-        health += amount;
-        GameManager.levelUIManager.updateHealth();
+        sunLineRenderer = GetComponent<LineRenderer>();
+        rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.paused)
+        if (!GameManager.levelStats.paused)
         {
             moveSunBeam();
             moveRainDrop();
@@ -41,19 +34,15 @@ public class MovementManager : MonoBehaviour
         transform.position = pos;
 
         //update the sunbeam
-        lineRenderer.SetPosition(1, pos);
+        sunLineRenderer.SetPosition(1, pos);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //if currently moving
         {
             moving = true;
-            if (GameManager.rainDrop.transform.position.x > transform.position.x) //if want raindrop to left of sunbeam
-                moveLeft = true;
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
         {
             moving = true;
-            if (GameManager.rainDrop.transform.position.x < transform.position.x) //if want raindrop to right of sunbeam
-                moveLeft = false;
         }
         else if (moving)
         {
@@ -71,19 +60,9 @@ public class MovementManager : MonoBehaviour
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime); //move towards new position with current speed
         }
-        //else if (dist >= maxDistAway && moving)//if moving and too far away
-        //{
-        //    float pos = transform.position.x;
-        //    if (!moveLeft)
-        //    {
-        //        pos -= maxDistAway;
-        //    }
-        //    else
-        //    {
-        //        pos += maxDistAway;
-        //    }
-        //    GameManager.rainDrop.transform.position = new Vector2(pos, rainDropPos.y);//ensures the raindrop never gets more then maxDistAway from the sunbeam
-        //}
+        rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
+        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
+
         rainLookAt();
     }
     void rainLookAt()
