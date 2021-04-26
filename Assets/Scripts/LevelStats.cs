@@ -6,7 +6,7 @@ public class LevelStats : MonoBehaviour
     public float speed = 0;
     public int score = 0;
     public float levelSecs = 180; //length of the level in seconds(chose 3 mins so all up 15 mins to do all levels and 5 mins allowed for players failing)
-    float timeLevelLoaded = 0;//length of time the level has been loaded for
+    public float timeLevelLoaded = 0;//length of time the level has been loaded for
 
     bool levelEnd = false;
 

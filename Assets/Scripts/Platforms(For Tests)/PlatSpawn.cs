@@ -15,9 +15,12 @@ public class PlatSpawn : MonoBehaviour
     }
     void Update()
     {
-        float dist = Mathf.Abs(newDist.transform.position.y - startY);
-        if(dist >= distAppart && canSpawn)
-            spawn();
+        if (!GameManager.levelStats.paused && canSpawn)
+        {
+            float dist = Mathf.Abs(newDist.transform.position.y - startY);
+            if (dist >= distAppart)
+                spawn();
+        }
     }
 
     void spawnFirst()//spawns in the first platform

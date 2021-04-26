@@ -7,10 +7,11 @@ public class Collision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Dead"))
         {
-            GameManager.levelUIManager.deadTxt.gameObject.SetActive(true);
-            GameManager.levelUIManager.restartBtn.gameObject.SetActive(true);
-            GameManager.levelStats.paused = true;
-            Time.timeScale = 1;
+            GameManager.levelUIManager.endLevel("The Raindrop Died :(");
+        }
+        if (collision.gameObject.CompareTag("End"))
+        {
+            GameManager.levelUIManager.endLevel("Stage Cleared :)");
         }
 
         if (collision.gameObject.CompareTag("RainDrop"))
