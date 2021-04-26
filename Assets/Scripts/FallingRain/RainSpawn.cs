@@ -18,7 +18,7 @@ public class RainSpawn : MonoBehaviour
     {
         if (!GameManager.levelStats.paused)
         {
-            Vector2 pos = new Vector2(Random.Range(-16, 16), Camera.main.transform.position.y + startY);
+            Vector2 pos = new Vector2(Random.Range(-30, 30), Camera.main.transform.position.y + startY);
             Instantiate(raindrop, pos, Quaternion.identity);
         }
     }
