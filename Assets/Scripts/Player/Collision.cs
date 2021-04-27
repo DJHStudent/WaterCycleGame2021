@@ -7,7 +7,12 @@ public class Collision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Dead"))
         {
-            GameManager.levelUIManager.endLevel("The Raindrop Died :(");
+            GameManager.levelStats.updateTrust(-50);
+            //Debug.Log(GameManager.levelStats.playerTrust);
+            if (GameManager.levelStats.playerTrust <= 0)
+            {
+                GameManager.levelUIManager.endLevel("The Raindrop Died :(");
+            }
         }
         if (collision.gameObject.CompareTag("End"))
         {

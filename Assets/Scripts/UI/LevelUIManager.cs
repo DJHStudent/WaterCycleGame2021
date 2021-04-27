@@ -5,7 +5,7 @@ public class LevelUIManager : MonoBehaviour
 {
     public Text deadTxt, healthTxt, finishScoreTxt, finishTimeTxt, finishHeightTxt;
     public Button restartBtn;
-    public Slider heightSlider;
+    public Slider heightSlider, trustSlider;
 
     public void endLevel(string message)
     {
@@ -33,6 +33,10 @@ public class LevelUIManager : MonoBehaviour
     public void maxHeight(float max)
     {
         heightSlider.maxValue = max;
+    }
+    public void setTrust(float value)
+    {
+        trustSlider.value = value;
     }
 
     public void updateScore()

@@ -58,7 +58,7 @@ public class MovementManager : MonoBehaviour
         if (dist > 0.01)// && !moving|| Math.Abs(transform.position.x) == 28.3f)//if not too close/ not moving or at one of the boarder walls
         {
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime); //move towards new position with current speed
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime * (GameManager.levelStats.playerTrust/50)); //move towards new position with current speed
         }
         rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
         rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
