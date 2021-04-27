@@ -21,9 +21,9 @@ public class LevelUIManager : MonoBehaviour
         deadTxt.text = message;
         finishScoreTxt.text = "Score: " + GameManager.levelStats.score;
         int mins = Mathf.FloorToInt(Time.timeSinceLevelLoad / 60);
-        float secs = Time.timeSinceLevelLoad - mins;
+        float secs = Mathf.Floor(Time.timeSinceLevelLoad % 60);
         finishHeightTxt.text = "Time: " + mins.ToString("00") + ":" + secs.ToString("00"); //note kinda inefficent here as off by a little based on frame inaccuracyies
-        finishTimeTxt.text = "Height: " + Mathf.Round(GameManager.levelStats.timeLevelLoaded) + "m";
+        finishTimeTxt.text = "Height: " + Mathf.Round(GameManager.levelStats.timeLevelLoaded / 5) + "m";
     }
     public void updateHeight(float time)
     {
