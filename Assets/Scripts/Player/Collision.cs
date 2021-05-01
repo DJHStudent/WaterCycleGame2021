@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Animator playerAnim;
+    private void Start()
+    {
+        playerAnim = GameManager.rainDrop.GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Dead"))
         {
             GameManager.levelStats.updateTrust(-50);
+            playerAnim.SetTrigger("Flashing");
             //Debug.Log(GameManager.levelStats.playerTrust);
             if (GameManager.levelStats.playerTrust <= 0)
             {

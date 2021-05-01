@@ -25,7 +25,7 @@ public class LevelStats : MonoBehaviour
             if(timeLevelLoaded >= levelSecs && !levelEnd)
             {
                 levelEnd = true;
-                GameManager.platSpawn.spawnEnd();
+                GameManager.levelGen.spawnEnd();
             }
         }
     }
