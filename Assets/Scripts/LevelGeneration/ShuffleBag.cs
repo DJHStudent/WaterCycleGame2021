@@ -16,7 +16,6 @@ public class ShuffleBag
                 shuffleList.Add(i);
         }
         currPos = shuffleList.Count - 1;
-        Debug.Log(shuffleList.Count);
     }
     public void initilize()
     {
