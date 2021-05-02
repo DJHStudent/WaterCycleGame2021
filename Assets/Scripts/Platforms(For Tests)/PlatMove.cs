@@ -10,7 +10,7 @@ public class PlatMove : MonoBehaviour
         if (!GameManager.levelStats.paused) //move at the specified speed until reach level bottom
         {
             transform.Translate(Vector3.down * speed * Time.deltaTime);
-            if (transform.position.y <= destroyYPos)
+            if (transform.position.y <= destroyYPos && this.gameObject != GameManager.levelGen.newDist.gameObject)
             {
                 Destroy(this.gameObject);
             }

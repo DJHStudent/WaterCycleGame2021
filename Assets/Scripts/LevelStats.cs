@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LevelStats : MonoBehaviour
 {
-    public bool paused = false;
+    public bool paused = false, tutActive = false;
     public float speed = 0, playerTrust = 100;
     public int score = 0;
     public float levelSecs = 180; //length of the level in seconds(chose 3 mins so all up 15 mins to do all levels and 5 mins allowed for players failing)

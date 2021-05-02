@@ -11,10 +11,11 @@ public class ObjStats
 }
 public class LevelGenerator : MonoBehaviour
 {
-    protected float spawnY = 54, startWaitTime, distAppart;
+    protected float spawnY = 54;
+    public float startWaitTime, distAppart;
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public GameObject end; //the end object
-    protected Transform newDist;//last spawned in platforms position;
+    public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
 

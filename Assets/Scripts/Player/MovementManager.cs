@@ -17,7 +17,7 @@ public class MovementManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.levelStats.paused)
+        if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)
         {
             moveSunBeam();
             moveRainDrop();
