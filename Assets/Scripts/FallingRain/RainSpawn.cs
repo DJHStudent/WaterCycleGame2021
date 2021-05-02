@@ -7,14 +7,13 @@ public class RainSpawn : MonoBehaviour
     float startY = 54;
     float spawnTime = 1.5f;
     public GameObject raindrop;
-    // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("spawn", spawnTime, spawnTime);
     }
 
     // Update is called once per frame
-    void spawn()
+    void spawn()//repeatidly spawn in a raindrop at the top of the level in a random x pos
     {
         if (!GameManager.levelStats.paused)
         {

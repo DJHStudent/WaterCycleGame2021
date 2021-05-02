@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +23,7 @@ public class ShuffleBag
         createList();
     }
 
-    public int getNext()
+    public int getNext()//the next item in the list to get
     {
         if(currPos < 0)
         {
@@ -37,7 +36,6 @@ public class ShuffleBag
         shuffleList[currPos] = temp;
 
         currPos--;
-        Debug.Log(temp);
         return temp;
     }
 }

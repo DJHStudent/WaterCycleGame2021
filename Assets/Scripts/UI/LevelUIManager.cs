@@ -7,7 +7,7 @@ public class LevelUIManager : MonoBehaviour
     public Button restartBtn;
     public Slider heightSlider, trustSlider;
 
-    public void endLevel(string message)
+    public void endLevel(string message)//UI which appears when the level ends
     {
         GameManager.levelStats.paused = true;
         Time.timeScale = 1;
@@ -30,7 +30,7 @@ public class LevelUIManager : MonoBehaviour
         heightSlider.value = time;
     }
 
-    public void maxHeight(float max)
+    public void maxHeight(float max)//set the max value for the slider
     {
         heightSlider.maxValue = max;
     }

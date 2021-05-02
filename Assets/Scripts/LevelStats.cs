@@ -19,10 +19,10 @@ public class LevelStats : MonoBehaviour
     {
         if (!paused)
         {
-            updateTrust(Time.deltaTime * 2);
-            timeLevelLoaded += Time.deltaTime;
+            updateTrust(Time.deltaTime * 2);//trust regen rate
+            timeLevelLoaded += Time.deltaTime;//deictates the height the player currently at
             GameManager.levelUIManager.updateHeight(timeLevelLoaded);
-            if(timeLevelLoaded >= levelSecs && !levelEnd)
+            if(timeLevelLoaded >= levelSecs && !levelEnd)//if reach the max height for the level
             {
                 levelEnd = true;
                 GameManager.levelGen.spawnEnd();
@@ -39,16 +39,14 @@ public class LevelStats : MonoBehaviour
 
     public void updateTrust(float value)
     {
-        Mathf.Clamp(playerTrust, 0, 100);
         playerTrust += value;
         playerTrust = Mathf.Clamp(playerTrust, 0, 100);
         GameManager.levelUIManager.setTrust(playerTrust);
     }
 
-    public void setSpeed()
+    public void setSpeed()//set the games speed exponentially based on the players score
     {
-        speed = Mathf.Clamp(Mathf.Pow(1.01f, 1 + score), 0, 100); //1.005;
-        //////Debug.Log(speed);
+        speed = Mathf.Clamp(Mathf.Pow(1.01f, 1 + score), 0, 6); //1.005;
         Time.timeScale = speed;
     }
 }

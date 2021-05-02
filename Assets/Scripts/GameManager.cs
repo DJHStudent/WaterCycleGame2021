@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static LevelGenerator levelGen;
     void Awake()
     {
-        //Application.targetFrameRate = -1;//-1 means unlimited   around 70 appart
+        //Application.targetFrameRate = -1;//-1 means unlimited
         Time.timeScale = 1;
         rainDrop = GameObject.Find("RainDrop");
         levelUIManager = GetComponent<LevelUIManager>();

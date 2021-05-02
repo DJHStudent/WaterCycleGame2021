@@ -5,7 +5,6 @@ public class MovementManager : MonoBehaviour
 {
 
     float maxSpeed = 40;
-
     bool moving = false;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
@@ -25,15 +24,14 @@ public class MovementManager : MonoBehaviour
         }
     }
 
-    void moveSunBeam() //update the sunbeams position based on input given
+    void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
     {
-        //update position based on key pressed
         Vector2 pos = transform.position;
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
         transform.position = pos;
 
-        //update the sunbeam
+        //update the sunbeam's visuals
         sunLineRenderer.SetPosition(1, pos);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //if currently moving
@@ -54,18 +52,19 @@ public class MovementManager : MonoBehaviour
     {
         Vector2 rainDropPos = GameManager.rainDrop.transform.position;
         float dist = Math.Abs(transform.position.x - rainDropPos.x);//get x dist from one to the other
-        //
-        if (dist > 0.01)// && !moving|| Math.Abs(transform.position.x) == 28.3f)//if not too close/ not moving or at one of the boarder walls
+
+        if (dist > 0.01)//if not too close to the sunbeam already
         {
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime * (GameManager.levelStats.playerTrust/50)); //move towards new position with current speed
+            float trustReduction = GameManager.levelStats.playerTrust / 50; //how reduced the speed becomes based on the players trust
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
         rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
         rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
 
         rainLookAt();
     }
-    void rainLookAt()
+    void rainLookAt()//get the angle of the sunbeam so looks in direction moving
     {
         float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
         GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir*2);

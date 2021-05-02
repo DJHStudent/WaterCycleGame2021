@@ -6,20 +6,19 @@ public class ObjStats
 {
     public GameObject obj; // the object spawining in
     public float minX, maxX; // the objects min/max X pos 
-    public int spawnChance;//the number of each item you want to appear in the shuffle list e.g if x = 100 and a = 1 it would display 100 x and 1 a before another a could be displayed
-    //a number between 1 and 10(inclusive), with that amount being placed in a list, then use a shuffle bag
+    public int spawnChance;//essentially the number of each item you want to appear in a list of 20
 
 }
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54, startWaitTime, distAppart;
-    public ObjStats[] wall; //a list of all the possible platforms which can spawn in(ordered from most to least likely)
+    public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public GameObject end; //the end object
     protected Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
 
-    ShuffleBag bag;
+    ShuffleBag bag;//the random list of platforms to choose from
 
     protected virtual void Start()
     {
@@ -36,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
                 spawn();
         }
     }
-    //////implement a shuffle bag approach to get the best possible random results
+    
     ObjStats determineObj() //here for reference https://docs.unity3d.com/2019.3/Documentation/Manual/RandomNumbers.html 
     {
         return wall[bag.getNext()];
@@ -46,8 +45,6 @@ public class LevelGenerator : MonoBehaviour
     {
         return Random.Range(pos.minX, pos.maxX);
     }
-
-
 
     void spawnFirst()//spawns in the first platform
     {
@@ -59,7 +56,6 @@ public class LevelGenerator : MonoBehaviour
             newDist = gameObject.transform;
         }
     }
-    // Update is called once per frame
     void spawn()//spawn in a new platform so its distAppart from the last platform
     {
         if (!GameManager.levelStats.paused)
