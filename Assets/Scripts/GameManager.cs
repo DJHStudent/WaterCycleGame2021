@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static MovementManager movementManager;
     public static LevelStats levelStats;
     public static LevelGenerator levelGen;
+    public static TrackingStats trackingStats;
     void Awake()
     {
         //Application.targetFrameRate = -1;//-1 means unlimited
@@ -17,5 +18,6 @@ public class GameManager : MonoBehaviour
         levelStats = GetComponent<LevelStats>();        
         levelStats.paused = false;
         movementManager = GameObject.Find("SunBeam").GetComponent<MovementManager>();
+        trackingStats = GameObject.Find("SaveManager").GetComponent<TrackingStats>();
     }
 }

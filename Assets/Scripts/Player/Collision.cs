@@ -16,7 +16,7 @@ public class Collision : MonoBehaviour
             //Debug.Log(GameManager.levelStats.playerTrust);
             if (GameManager.levelStats.playerTrust <= 0)//if no trust left die
             {
-                GameManager.levelUIManager.onDeath("The Raindrop Died :(");
+                GameManager.levelUIManager.onDeath("The Raindrop Left You");
             }
         }
         if (collision.gameObject.CompareTag("End"))//if clear the level

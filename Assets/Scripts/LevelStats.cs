@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LevelStats : MonoBehaviour
 {
-    public bool paused = false, tutActive = false;
+    public bool paused = false, tutActive = false, notrust = false;
     public float speed = 0, playerTrust = 100, playerSize = 8;
     public int score = 0;
     public float levelSecs = 180; //length of the level in seconds(chose 3 mins so all up 15 mins to do all levels and 5 mins allowed for players failing)
@@ -14,6 +14,9 @@ public class LevelStats : MonoBehaviour
 
     void Start()
     {
+        updateScore(GameManager.trackingStats.currScore);
+        updateTrust(-(100 - GameManager.trackingStats.currTrust));
+        updateSize(-(8 - GameManager.trackingStats.currSize));
         GameManager.levelUIManager.maxHeight(levelSecs);
     }
 
@@ -54,7 +57,7 @@ public class LevelStats : MonoBehaviour
         GameManager.rainDrop.transform.localScale = new Vector2(playerSize, playerSize);
         if(playerSize <= 0)
         {
-            GameManager.levelUIManager.onDeath("The Raindrop Died :(");
+            GameManager.levelUIManager.onDeath("The Raindrop Evaporated");
         }
     }
     public void setSpeed()//set the games speed exponentially based on the players score

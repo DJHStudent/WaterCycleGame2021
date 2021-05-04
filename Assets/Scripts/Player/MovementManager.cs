@@ -22,6 +22,8 @@ public class MovementManager : MonoBehaviour
             moveSunBeam();
             moveRainDrop();
         }
+        if (GameManager.levelStats.notrust)
+            noTrust();
     }
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
@@ -59,8 +61,7 @@ public class MovementManager : MonoBehaviour
             float trustReduction = GameManager.levelStats.playerTrust / 50; //how reduced the speed becomes based on the players trust
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
-        rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
-        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
+        updateTrail();
 
         rainLookAt();
     }
@@ -68,5 +69,21 @@ public class MovementManager : MonoBehaviour
     {
         float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
         GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir*2);
+    }
+
+    void noTrust()
+    {
+        GameManager.rainDrop.transform.rotation = Quaternion.identity;
+        Vector2 pos = GameManager.rainDrop.transform.position;
+        pos.y -= 15 * Time.deltaTime;
+        GameManager.rainDrop.transform.position = pos;
+
+        updateTrail();
+    }
+
+    void updateTrail()
+    {
+        rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
+        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
     }
 }
