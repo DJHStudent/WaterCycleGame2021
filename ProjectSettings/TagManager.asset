@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dead
   - RainDrop
+  - End
   layers:
   - Default
   - TransparentFX

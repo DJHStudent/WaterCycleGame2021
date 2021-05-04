@@ -14,7 +14,7 @@ public class RainMove : MonoBehaviour
     }
     void Update()
     {
-        if (!GameManager.paused)
+        if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)
         {
             transform.position = transform.position + Vector3.down * speed * Time.deltaTime;
             if (transform.position.y <= destroyYPos)
