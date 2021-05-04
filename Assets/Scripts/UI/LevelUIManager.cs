@@ -1,4 +1,5 @@
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class LevelUIManager : MonoBehaviour
@@ -7,7 +8,14 @@ public class LevelUIManager : MonoBehaviour
     public Button restartBtn;
     public Slider heightSlider, trustSlider;
 
-    public void endLevel(string message)//UI which appears when the level ends
+    public void endLevel()//UI which appears when the level ends
+    {
+        GameManager.levelStats.paused = true;
+
+        SceneManager.LoadScene("TransitionScene", LoadSceneMode.Additive);
+    }
+
+    public void onDeath(string message)
     {
         GameManager.levelStats.paused = true;
         Time.timeScale = 1;

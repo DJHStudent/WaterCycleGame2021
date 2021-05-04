@@ -8,6 +8,8 @@ public class LevelStats : MonoBehaviour
     public float levelSecs = 180; //length of the level in seconds(chose 3 mins so all up 15 mins to do all levels and 5 mins allowed for players failing)
     public float timeLevelLoaded = 0;//length of time the level has been loaded for
 
+    public string currLevel, nextLevel;
+
     bool levelEnd = false;
 
     void Start()
@@ -52,7 +54,7 @@ public class LevelStats : MonoBehaviour
         GameManager.rainDrop.transform.localScale = new Vector2(playerSize, playerSize);
         if(playerSize <= 0)
         {
-            GameManager.levelUIManager.endLevel("The Raindrop Died :(");
+            GameManager.levelUIManager.onDeath("The Raindrop Died :(");
         }
     }
     public void setSpeed()//set the games speed exponentially based on the players score
