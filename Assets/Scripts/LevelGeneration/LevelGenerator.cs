@@ -12,7 +12,7 @@ public class ObjStats
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
-    public float startWaitTime, distAppart;
+    public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
@@ -42,9 +42,23 @@ public class LevelGenerator : MonoBehaviour
         return wall[bag.getNext()];
     }
 
-    float objXPos(ObjStats pos)//gets a random x position to spawn the object in
+    float objXPos(ObjStats pos)//gets a random x position to spawn the object in so not give a gap over the same spot as last time
     {
-        return Random.Range(pos.minX, pos.maxX);
+        if (newDist == null)
+            return Random.Range(pos.minX, pos.maxX);
+        //ensures the randomly chosen value is not between the gap of the previous one
+        float maxMinVal = newDist.position.x - xDistNotSpawn;
+        float minMaxVal = newDist.position.x + xDistNotSpawn;
+        
+        float[] posValues = new float[2];
+        posValues[0] = Random.Range(pos.minX, maxMinVal);
+        posValues[1] = Random.Range(minMaxVal, pos.maxX);
+        //ensure the value returned is still within the appropriate range
+        if (maxMinVal < pos.minX)
+            return posValues[1];
+        if (minMaxVal > pos.maxX)
+            return posValues[0];
+        return posValues[Random.Range(0, 2)];
     }
 
     void spawnFirst()//spawns in the first platform

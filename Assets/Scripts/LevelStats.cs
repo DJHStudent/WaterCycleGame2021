@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelStats : MonoBehaviour
 {
     public bool paused = false, tutActive = false;
-    public float speed = 0, playerTrust = 100;
+    public float speed = 0, playerTrust = 100, playerSize = 8;
     public int score = 0;
     public float levelSecs = 180; //length of the level in seconds(chose 3 mins so all up 15 mins to do all levels and 5 mins allowed for players failing)
     public float timeLevelLoaded = 0;//length of time the level has been loaded for
@@ -22,6 +22,7 @@ public class LevelStats : MonoBehaviour
             updateTrust(Time.deltaTime * 2);//trust regen rate
             timeLevelLoaded += Time.deltaTime;//deictates the height the player currently at
             GameManager.levelUIManager.updateHeight(timeLevelLoaded);
+            updateSize(-Time.deltaTime * 0.15f);
             if(timeLevelLoaded >= levelSecs && !levelEnd)//if reach the max height for the level
             {
                 levelEnd = true;
@@ -44,6 +45,16 @@ public class LevelStats : MonoBehaviour
         GameManager.levelUIManager.setTrust(playerTrust);
     }
 
+    public void updateSize(float value)//update the amount of water the player has left
+    {
+        playerSize += value;
+        playerSize = Mathf.Clamp(playerSize, 0, 8);//the min and max possible size for the player
+        GameManager.rainDrop.transform.localScale = new Vector2(playerSize, playerSize);
+        if(playerSize <= 0)
+        {
+            GameManager.levelUIManager.endLevel("The Raindrop Died :(");
+        }
+    }
     public void setSpeed()//set the games speed exponentially based on the players score
     {
         speed = Mathf.Clamp(Mathf.Pow(1.01f, 1 + score), 0, 6); //1.005;

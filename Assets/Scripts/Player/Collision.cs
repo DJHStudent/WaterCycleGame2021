@@ -27,6 +27,7 @@ public class Collision : MonoBehaviour
         if (collision.gameObject.CompareTag("RainDrop"))//if collect a raindrop
         {
             GameManager.levelStats.updateScore(1);
+            GameManager.levelStats.updateSize(0.5f);
             Destroy(collision.gameObject);
         }
     }
