@@ -25,7 +25,7 @@ public class LevelStats : MonoBehaviour
         if (!paused)
         {
             updateTrust(Time.deltaTime * 2);//trust regen rate
-            timeLevelLoaded += Time.deltaTime;//deictates the height the player currently at
+            timeLevelLoaded += Time.deltaTime * speed;//deictates the height the player currently at
             GameManager.levelUIManager.updateHeight(timeLevelLoaded);
             updateSize(-Time.deltaTime * 0.15f);
             if(timeLevelLoaded >= levelSecs && !levelEnd)//if reach the max height for the level
@@ -62,7 +62,8 @@ public class LevelStats : MonoBehaviour
     }
     public void setSpeed()//set the games speed exponentially based on the players score
     {
-        speed = Mathf.Clamp(Mathf.Pow(1.01f, 1 + score), 0, 6); //1.005;
-        Time.timeScale = speed;
+        speed = Mathf.Clamp(Mathf.Pow(1.01f, 1 + score), 0, 3.5f); //1.005;
+        Debug.Log(speed);
+        //Time.timeScale = speed;
     }
 }
