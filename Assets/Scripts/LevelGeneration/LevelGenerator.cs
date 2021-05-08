@@ -9,27 +9,39 @@ public class ObjStats
     public int spawnChance;//essentially the number of each item you want to appear in a list of 20
 
 }
+
+[System.Serializable]
+public class LevelPacing
+{
+    public GameObject obj; // the object spawining in
+    public float minX, maxX; // the objects min/max X pos 
+    public int spawnChance;//essentially the number of each item you want to appear in a list of 20
+
+}
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
     public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
+    public int[,] levelPacing_ElementSpawnChance; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
     public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
 
-    ShuffleBag bag;//the random list of platforms to choose from
+    ShuffleBag bag, spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
 
     protected virtual void Start()
     {
-        bag = new ShuffleBag();
-        bag.initilize();
+        bag = new ShuffleBag(); bag.initilize();
+
+        spawnType = new ShuffleBag(); spawnType.initilize();
+        exploreSpawn = new ShuffleBag(); exploreSpawn.initilize();
         StartCoroutine(startWait());
     }
     void Update()
     {
-        if (!GameManager.levelStats.paused && canSpawn)
+        if (!GameManager.levelStats.paused && canSpawn && newDist != null)
         {
             float dist = Mathf.Abs(newDist.position.y - spawnY);
             if (dist >= distAppart)//if last platform far enought from its spawn position
