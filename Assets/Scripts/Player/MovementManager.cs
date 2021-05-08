@@ -59,7 +59,6 @@ public class MovementManager : MonoBehaviour
         {
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
             float trustReduction = GameManager.levelStats.playerTrust / 100; //how reduced the speed becomes based on the players trust
-            Debug.Log(trustReduction);
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
         updateTrail();

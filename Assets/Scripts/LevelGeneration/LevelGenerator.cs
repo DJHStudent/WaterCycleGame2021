@@ -14,17 +14,20 @@ public class LevelGenerator : MonoBehaviour
     protected float spawnY = 54;
     public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
+    public int[,] levelPacing_ElementSpawnChance; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
     public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
 
-    ShuffleBag bag;//the random list of platforms to choose from
+    ShuffleBag bag, spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
 
     protected virtual void Start()
     {
-        bag = new ShuffleBag();
-        bag.initilize();
+        bag = new ShuffleBag(); bag.initilize();
+
+        spawnType = new ShuffleBag(); spawnType.createTypes();
+        exploreSpawn = new ShuffleBag(); exploreSpawn.createList();
         StartCoroutine(startWait());
     }
     void Update()

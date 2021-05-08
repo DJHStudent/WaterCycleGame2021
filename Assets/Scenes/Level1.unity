@@ -1905,6 +1905,7 @@ MonoBehaviour:
     minX: -16
     maxX: 16
     spawnChance: 20
+  levelPacing_ElementSpawnChance: 0000000000000000000000000000000000000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &2030467917
@@ -1959,7 +1960,7 @@ MonoBehaviour:
   playerTrust: 100
   playerSize: 8
   score: 0
-  levelSecs: 180
+  levelSecs: 120
   timeLevelLoaded: 0
   currLevel: Level1
   nextLevel: Tutorial
