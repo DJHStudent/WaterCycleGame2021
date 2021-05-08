@@ -4,7 +4,7 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
 
-    float maxSpeed = 40;
+    float maxSpeed = 50;
     bool moving = false;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
@@ -29,7 +29,7 @@ public class MovementManager : MonoBehaviour
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
     {
         Vector2 pos = transform.position;
-        pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime;
+        pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime; //both were at 3
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
         transform.position = pos;
 
@@ -58,8 +58,9 @@ public class MovementManager : MonoBehaviour
         if (dist > 0.01)//if not too close to the sunbeam already
         {
             Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
-            float trustReduction = GameManager.levelStats.playerTrust / 50; //how reduced the speed becomes based on the players trust
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime * trustReduction); //move towards new position with current speed
+            float trustReduction = GameManager.levelStats.playerTrust / 100; //how reduced the speed becomes based on the players trust
+            Debug.Log(trustReduction);
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
         updateTrail();
 
