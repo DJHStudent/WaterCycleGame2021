@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingObject : MonoBehaviour
+public class RainSpawn : MonoBehaviour
 {
     float startY = 54, lastXPos = 30;
     float spawnTime = 1.5f;
@@ -44,7 +44,6 @@ public class FallingObject : MonoBehaviour
         return temp;
     }
 
-    // Update is called once per frame
     void spawn()//repeatidly spawn in a raindrop at the top of the level in a random x pos
     {
         if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)

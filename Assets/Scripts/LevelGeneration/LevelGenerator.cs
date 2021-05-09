@@ -1,47 +1,58 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
+//also move leaves so spawns with own script, ensuring can be not enabled if on tutorial
 [System.Serializable]
 public class ObjStats
 {
     public GameObject obj; // the object spawining in
     public float minX, maxX; // the objects min/max X pos 
-    public int spawnChance;//essentially the number of each item you want to appear in a list of 20
-
 }
 
 [System.Serializable]
 public class LevelPacing
 {
-    public GameObject obj; // the object spawining in
-    public float minX, maxX; // the objects min/max X pos 
-    public int spawnChance;//essentially the number of each item you want to appear in a list of 20
-
+    public int spawnChance; //the number of each of the 4 difficulty types you want to have spawn in before it repeates
+    public float leaveSpawnRate; //the rate at which the leaves spawn in, in seconds for this difficulty
+    public int distPlatsAppart; //the platforms distance appart for this difficulty
+    public int[] platformSpawnChance; // the for each of the platforms identified from wall what is the spawn chance of each one to actually spawn in(in same order seen in wall)
 }
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
-    public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
+    public float startWaitTime, distAppart; 
+    float xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
-    public int[,] levelPacing_ElementSpawnChance; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
+    public LevelPacing[] levelPacing; //list of the 4 different difficulty options
     public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
+    bool changeDist = false; float newDistAppart;
 
-    ShuffleBag bag, spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
+    ShuffleBag spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
+    ShuffleBag currBag;
 
     protected virtual void Start()
     {
-        bag = new ShuffleBag(); bag.initilize();
+        //bag = new ShuffleBag(); bag.initilize();
 
-        spawnType = new ShuffleBag(); spawnType.initilize();
-        exploreSpawn = new ShuffleBag(); exploreSpawn.initilize();
+        spawnType = new ShuffleBag(); spawnType.createTypes();
+        exploreSpawn = new ShuffleBag(); exploreSpawn.createList(0);
+        midGroundSpawn = new ShuffleBag(); midGroundSpawn.createList(1);
+        bottleNeckSpawn = new ShuffleBag(); bottleNeckSpawn.createList(2);
+        hardCoreSpawn = new ShuffleBag(); hardCoreSpawn.createList(3);
+
+        currBag = exploreSpawn;
+        distAppart = levelPacing[0].distPlatsAppart;
+        if(GameManager.leavesSpawn)
+            GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
+
         StartCoroutine(startWait());
     }
     void Update()
     {
-        if (!GameManager.levelStats.paused && canSpawn && newDist != null)
+        if (!GameManager.levelStats.paused && canSpawn)
         {
             float dist = Mathf.Abs(newDist.position.y - spawnY);
             if (dist >= distAppart)//if last platform far enought from its spawn position
@@ -51,7 +62,48 @@ public class LevelGenerator : MonoBehaviour
     
     ObjStats determineObj() //here for reference https://docs.unity3d.com/2019.3/Documentation/Manual/RandomNumbers.html 
     {
-        return wall[bag.getNext()];
+        return wall[currBag.getNext()];
+    }
+
+    public void updateBag()//change the shufflebag using
+    {
+        int pos;
+        Debug.Log("Changed Bag Using");
+        if (currBag == hardCoreSpawn)
+            pos = 0;
+        else
+            pos = spawnType.getNext();
+        switch (pos)
+        {
+            case 0:
+                currBag = exploreSpawn;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if(GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                break;
+            case 1:
+                currBag = midGroundSpawn;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                break;
+            case 2:
+                currBag = bottleNeckSpawn;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                break;
+            default: 
+                currBag = hardCoreSpawn;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                break;
+        }
     }
 
     float objXPos(ObjStats pos)//gets a random x position to spawn the object in so not give a gap over the same spot as last time
@@ -89,6 +141,11 @@ public class LevelGenerator : MonoBehaviour
         {
             ObjStats newObj = determineObj();
             Vector2 pos = new Vector2(objXPos(newObj), newDist.position.y + distAppart);
+            if (changeDist)
+            {
+                distAppart = newDistAppart;
+                changeDist = false;
+            }
             GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
             newDist = gameObject.transform;
         }
@@ -108,4 +165,6 @@ public class LevelGenerator : MonoBehaviour
         spawnFirst();
 
     }
+
+    //leaf spawning now can finally do
 }

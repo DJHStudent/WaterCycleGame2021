@@ -7,7 +7,7 @@ public class RainMove : MoveDown
 
     private void Start()
     {
-        speed = Random.Range(20, 40);
+        speed = Random.Range(25, 40);
     }
 
     protected override bool whenPause()

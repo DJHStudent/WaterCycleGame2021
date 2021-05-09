@@ -12,7 +12,7 @@ public class MoveDown : MonoBehaviour
     {
         if (whenPause()) //move at the specified speed until reach level bottom
         {
-            transform.Translate(Vector3.down * speed * GameManager.levelStats.speed * Time.deltaTime);
+            transform.Translate(Vector2.down * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World);
             if (whenDestroy())
             {
                 Destroy(this.gameObject);
