@@ -7,6 +7,7 @@ public class ShuffleBag
     //based on this explanation https://gamedevelopment.tutsplus.com/tutorials/shuffle-bags-making-random-feel-more-random--gamedev-1249
     List<int> shuffleList = new List<int>(); //list of all elements wanting to pick from
     int currPos;
+    bool isTypeSpawn = false;
     public void createList(int i)//the list of items created
     { //
         ObjStats[] plats = GameManager.levelGen.wall;
@@ -22,10 +23,11 @@ public class ShuffleBag
 
     public void createTypes()//the list of when a specific pacing moment will occur
     {
+        isTypeSpawn = true;
         LevelPacing[] pacing = GameManager.levelGen.levelPacing;
         for (int i = 0; i < pacing.Length; i++)
         {
-            for (int j = 0; j < pacing[i].platformSpawnChance.Length; j++)
+            for (int j = 0; j < pacing[i].spawnChance; j++)
                 shuffleList.Add(i);
         }
         currPos = shuffleList.Count - 1;
@@ -37,7 +39,9 @@ public class ShuffleBag
         {
             currPos = shuffleList.Count - 1;
             Debug.Log("bag empty");
-            GameManager.levelGen.updateBag(); //add check so only updates the bag if not the pacingList
+            if (!isTypeSpawn)
+                GameManager.levelGen.updateBag(); //add check so only updates the bag if not the pacingList
+
         }
         int randValue = Random.Range(0, currPos);
         //swapp the random item and the current item

@@ -331,7 +331,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
@@ -348,19 +347,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9caf1e57f65f91b43af993b0d2259712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1900,6 +1886,7 @@ GameObject:
   - component: {fileID: 2030467917}
   - component: {fileID: 2030467918}
   - component: {fileID: 2030467919}
+  - component: {fileID: 2030467920}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1946,26 +1933,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 0
+  leafSpawnTime: 0
   distAppart: 0
   xDistNotSpawn: 12
   wall:
   - obj: {fileID: 8669327148729892448, guid: 2b790507c5a242d4fbd7b778bfb3b514, type: 3}
     minX: -16
     maxX: 16
+  - obj: {fileID: 1692304193660853668, guid: d12dbf17a2d6c204fb408af403b29a5a, type: 3}
+    minX: 0
+    maxX: 0
   levelPacing:
-  - spawnChance: 7
+  - spawnChance: 2
+    leaveSpawnRate: 2
     distPlatsAppart: 70
     platformSpawnChance: 05000000
-  - spawnChance: 3
+  - spawnChance: 2
+    leaveSpawnRate: 1.5
     distPlatsAppart: 50
     platformSpawnChance: 05000000
-  - spawnChance: 2
+  - spawnChance: 1
+    leaveSpawnRate: 1.5
     distPlatsAppart: 40
     platformSpawnChance: 05000000
   - spawnChance: 1
-    distPlatsAppart: 30
-    platformSpawnChance: 05000000
+    leaveSpawnRate: 0.5
+    distPlatsAppart: 70
+    platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
+  leaf: {fileID: 1075053607075706881, guid: 34e47c9a00357cc4081f3d14645f445c, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &2030467917
 MonoBehaviour:
@@ -2023,6 +2019,19 @@ MonoBehaviour:
   timeLevelLoaded: 0
   currLevel: Level1
   nextLevel: Tutorial
+--- !u!114 &2030467920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030467913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caf1e57f65f91b43af993b0d2259712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
 --- !u!4 &2051693414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
