@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//also move leaves so spawns with own script, ensuring can be not enabled if on tutorial
 [System.Serializable]
 public class ObjStats
 {
@@ -22,20 +22,20 @@ public class LevelPacing
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
-    public float startWaitTime, leafSpawnTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
+    public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public LevelPacing[] levelPacing; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
-    public GameObject end, leaf; //the end object
+    public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
+    bool changeDist = false; float newDistAppart;
 
     ShuffleBag spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
     ShuffleBag currBag;
 
     protected virtual void Start()
     {
-        createSpawnPoints();
         //bag = new ShuffleBag(); bag.initilize();
 
         spawnType = new ShuffleBag(); spawnType.createTypes();
@@ -46,9 +46,9 @@ public class LevelGenerator : MonoBehaviour
 
         currBag = exploreSpawn;
         distAppart = levelPacing[0].distPlatsAppart;
-        leafSpawnTime = levelPacing[0].leaveSpawnRate;
+        GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
+
         StartCoroutine(startWait());
-        StartCoroutine(leaveSpawn());
     }
     void Update()
     {
@@ -68,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
     public void updateBag()//change the shufflebag using
     {
         int pos;
-        Debug.Log("change bag using");
+        Debug.Log("Changed Bag Using");
         if (currBag == hardCoreSpawn)
             pos = 0;
         else
@@ -77,23 +77,31 @@ public class LevelGenerator : MonoBehaviour
         {
             case 0:
                 currBag = exploreSpawn;
-                distAppart = levelPacing[pos].distPlatsAppart;
-                leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if(GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
                 break;
             case 1:
                 currBag = midGroundSpawn;
-                distAppart = levelPacing[pos].distPlatsAppart;
-                leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
                 break;
             case 2:
                 currBag = bottleNeckSpawn;
-                distAppart = levelPacing[pos].distPlatsAppart;
-                leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
                 break;
             default: 
                 currBag = hardCoreSpawn;
-                distAppart = levelPacing[pos].distPlatsAppart;
-                leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                newDistAppart = levelPacing[pos].distPlatsAppart;
+                changeDist = true;
+                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
                 break;
         }
     }
@@ -133,6 +141,11 @@ public class LevelGenerator : MonoBehaviour
         {
             ObjStats newObj = determineObj();
             Vector2 pos = new Vector2(objXPos(newObj), newDist.position.y + distAppart);
+            if (changeDist)
+            {
+                distAppart = newDistAppart;
+                changeDist = false;
+            }
             GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
             newDist = gameObject.transform;
         }
@@ -151,44 +164,6 @@ public class LevelGenerator : MonoBehaviour
         canSpawn = true;
         spawnFirst();
 
-    }
-    List<int> xSpawnPoints = new List<int>();
-    int currXPos;
-    void createSpawnPoints()
-    {
-        for (int i = -30; i <= 30; i += 3)
-        {
-            xSpawnPoints.Add(i);
-        }
-        currXPos = xSpawnPoints.Count - 1;
-    }
-
-    public int getNext()//the next item in the list to get
-    {
-        if (currXPos < 0)
-        {
-            currXPos = xSpawnPoints.Count - 1;
-        }
-        int randValue = Random.Range(0, currXPos);
-        //swapp the random item and the current item
-        int temp = xSpawnPoints[randValue];
-        xSpawnPoints[randValue] = xSpawnPoints[currXPos];
-        xSpawnPoints[currXPos] = temp;
-
-        currXPos--;
-
-        return temp;
-    }
-    IEnumerator leaveSpawn()
-    {
-        yield return new WaitForSeconds(leafSpawnTime);
-        //spawn leaf
-        Vector2 pos = new Vector2(getNext(), 54);
-        Vector3 rot = new Vector3(0, 0, Random.Range(0, 360));
-        GameObject currLeaf = Instantiate(leaf, pos, Quaternion.Euler(rot));
-        //if(!currLeaf.GetComponent<PolygonCollider2D>())
-        //    currLeaf.AddComponent<PolygonCollider2D>().isTrigger = true;
-        StartCoroutine(leaveSpawn());
     }
 
     //leaf spawning now can finally do

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingObject : MonoBehaviour
+public class RainSpawn : MonoBehaviour
 {
     float startY = 54, lastXPos = 30;
     float spawnTime = 1.5f;

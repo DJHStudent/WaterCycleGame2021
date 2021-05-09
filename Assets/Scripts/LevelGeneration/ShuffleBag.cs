@@ -38,7 +38,6 @@ public class ShuffleBag
         if(currPos < 0)
         {
             currPos = shuffleList.Count - 1;
-            Debug.Log("bag empty");
             if (!isTypeSpawn)
                 GameManager.levelGen.updateBag(); //add check so only updates the bag if not the pacingList
 
