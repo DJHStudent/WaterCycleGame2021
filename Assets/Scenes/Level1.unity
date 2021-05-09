@@ -1957,7 +1957,7 @@ MonoBehaviour:
     distPlatsAppart: 40
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 0.5
+    leaveSpawnRate: 0.25
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}

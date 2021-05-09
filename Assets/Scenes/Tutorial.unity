@@ -686,14 +686,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 0
+  leafSpawnTime: 0
   distAppart: 85
   xDistNotSpawn: 12
   wall:
   - obj: {fileID: 2130799456221520893, guid: 7d6bb0994bcd973418ff9a160392cacf, type: 3}
     minX: -14.5
     maxX: 14.5
-  levelPacing: []
+  levelPacing:
+  - spawnChance: 5
+    leaveSpawnRate: 0
+    distPlatsAppart: 85
+    platformSpawnChance: 05000000
+  - spawnChance: 0
+    leaveSpawnRate: 0
+    distPlatsAppart: 0
+    platformSpawnChance: 
+  - spawnChance: 0
+    leaveSpawnRate: 0
+    distPlatsAppart: 0
+    platformSpawnChance: 
+  - spawnChance: 0
+    leaveSpawnRate: 0
+    distPlatsAppart: 0
+    platformSpawnChance: 
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
+  leaf: {fileID: 0}
   newDist: {fileID: 0}
 --- !u!1 &531552188
 GameObject:
