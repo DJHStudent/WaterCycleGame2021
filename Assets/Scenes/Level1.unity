@@ -502,54 +502,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590893681}
   m_CullTransparentMesh: 1
---- !u!1 &603597060
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 603597062}
-  - component: {fileID: 603597061}
-  m_Layer: 0
-  m_Name: SaveManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &603597061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603597060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ecb4fbf3b508945bac20d8fef85134, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currScore: 0
-  currHeight: 0
-  currTime: 0
-  currTrust: 0
-  currSize: 0
---- !u!4 &603597062
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603597060}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.914591, y: -38.500862, z: -117.62969}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788685955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +1839,7 @@ GameObject:
   - component: {fileID: 2030467918}
   - component: {fileID: 2030467919}
   - component: {fileID: 2030467920}
+  - component: {fileID: 2030467921}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1932,10 +1885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef1f6664da2ed6489253128c6f70e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaitTime: 0
-  leafSpawnTime: 0
-  distAppart: 0
-  xDistNotSpawn: 12
+  startWaitTime: 7
+  distAppart: 70
   wall:
   - obj: {fileID: 8669327148729892448, guid: 2b790507c5a242d4fbd7b778bfb3b514, type: 3}
     minX: -16
@@ -1961,7 +1912,6 @@ MonoBehaviour:
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
-  leaf: {fileID: 1075053607075706881, guid: 34e47c9a00357cc4081f3d14645f445c, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &2030467917
 MonoBehaviour:
@@ -2032,6 +1982,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
+--- !u!114 &2030467921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030467913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c937d4c763da9447a67ac3c6d10e895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaf: {fileID: 1075053607075706881, guid: 34e47c9a00357cc4081f3d14645f445c, type: 3}
+  leafSpawnTime: 0
 --- !u!4 &2051693414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}

@@ -14,7 +14,7 @@ public class LeavesSpawn : MonoBehaviour
         createSpawnPoints();
         StartCoroutine(leaveSpawn());
     }
-    void createSpawnPoints()
+    void createSpawnPoints() //list of all x positions to cycle through before going back and spawning in that pos again
     {
         for (int i = -30; i <= 30; i += 3)
         {
@@ -39,15 +39,13 @@ public class LeavesSpawn : MonoBehaviour
 
         return temp;
     }
-    IEnumerator leaveSpawn()
+    IEnumerator leaveSpawn() //repeatedly spawn in a leaf in the specified x pos at the top of the map
     {
         yield return new WaitForSeconds(leafSpawnTime);
         //spawn leaf
         Vector2 pos = new Vector2(getNext(), 54);
         Vector3 rot = new Vector3(0, 0, Random.Range(0, 360));
         GameObject currLeaf = Instantiate(leaf, pos, Quaternion.Euler(rot));
-        //if(!currLeaf.GetComponent<PolygonCollider2D>())
-        //    currLeaf.AddComponent<PolygonCollider2D>().isTrigger = true;
         StartCoroutine(leaveSpawn());
     }
 }

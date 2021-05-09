@@ -44,7 +44,6 @@ public class RainSpawn : MonoBehaviour
         return temp;
     }
 
-    // Update is called once per frame
     void spawn()//repeatidly spawn in a raindrop at the top of the level in a random x pos
     {
         if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)

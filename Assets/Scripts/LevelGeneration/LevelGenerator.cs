@@ -7,24 +7,23 @@ public class ObjStats
 {
     public GameObject obj; // the object spawining in
     public float minX, maxX; // the objects min/max X pos 
-    //public int spawnChance;//essentially the number of each item you want to appear in a list of 20
-
 }
 
 [System.Serializable]
 public class LevelPacing
 {
-    public int spawnChance; // the object spawining in
-    public float leaveSpawnRate; // the rate at which the leaves spawn in, in seconds
-    public int distPlatsAppart;
-    public int[] platformSpawnChance; // the objects min/max X pos 
+    public int spawnChance; //the number of each of the 4 difficulty types you want to have spawn in before it repeates
+    public float leaveSpawnRate; //the rate at which the leaves spawn in, in seconds for this difficulty
+    public int distPlatsAppart; //the platforms distance appart for this difficulty
+    public int[] platformSpawnChance; // the for each of the platforms identified from wall what is the spawn chance of each one to actually spawn in(in same order seen in wall)
 }
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
-    public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
+    public float startWaitTime, distAppart; 
+    float xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
-    public LevelPacing[] levelPacing; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
+    public LevelPacing[] levelPacing; //list of the 4 different difficulty options
     public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
 
@@ -46,7 +45,8 @@ public class LevelGenerator : MonoBehaviour
 
         currBag = exploreSpawn;
         distAppart = levelPacing[0].distPlatsAppart;
-        GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
+        if(GameManager.leavesSpawn)
+            GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
 
         StartCoroutine(startWait());
     }
