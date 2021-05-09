@@ -516,6 +516,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590893681}
   m_CullTransparentMesh: 1
+--- !u!1 &603597060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 603597062}
+  - component: {fileID: 603597061}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &603597061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603597060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ecb4fbf3b508945bac20d8fef85134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currScore: 0
+  currHeight: 0
+  currTime: 0
+  currTrust: 0
+  currSize: 0
+--- !u!4 &603597062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603597060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.914591, y: -38.500862, z: -117.62969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788685955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,8 +1952,19 @@ MonoBehaviour:
   - obj: {fileID: 8669327148729892448, guid: 2b790507c5a242d4fbd7b778bfb3b514, type: 3}
     minX: -16
     maxX: 16
-    spawnChance: 20
-  levelPacing_ElementSpawnChance: 0000000000000000000000000000000000000000
+  levelPacing:
+  - spawnChance: 7
+    distPlatsAppart: 70
+    platformSpawnChance: 05000000
+  - spawnChance: 3
+    distPlatsAppart: 50
+    platformSpawnChance: 05000000
+  - spawnChance: 2
+    distPlatsAppart: 40
+    platformSpawnChance: 05000000
+  - spawnChance: 1
+    distPlatsAppart: 30
+    platformSpawnChance: 05000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &2030467917

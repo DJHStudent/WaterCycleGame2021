@@ -6,28 +6,43 @@ public class ObjStats
 {
     public GameObject obj; // the object spawining in
     public float minX, maxX; // the objects min/max X pos 
-    public int spawnChance;//essentially the number of each item you want to appear in a list of 20
+    //public int spawnChance;//essentially the number of each item you want to appear in a list of 20
 
+}
+
+[System.Serializable]
+public class LevelPacing
+{
+    public int spawnChance; // the object spawining in
+    public int distPlatsAppart;
+    public int[] platformSpawnChance; // the objects min/max X pos 
 }
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
     public float startWaitTime, distAppart, xDistNotSpawn; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
-    public int[,] levelPacing_ElementSpawnChance; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
+    public LevelPacing[] levelPacing; //for this one the first dimetntion is the type pacing you want spawned in, 2nd dimention is the number of each platform(in order) you want to appear
     public GameObject end; //the end object
     public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
 
-    ShuffleBag bag, spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
+    ShuffleBag spawnType, exploreSpawn, midGroundSpawn, bottleNeckSpawn, hardCoreSpawn;//the random list of platforms to choose from
+    ShuffleBag currBag;
 
     protected virtual void Start()
     {
-        bag = new ShuffleBag(); bag.initilize();
+        //bag = new ShuffleBag(); bag.initilize();
 
         spawnType = new ShuffleBag(); spawnType.createTypes();
-        exploreSpawn = new ShuffleBag(); exploreSpawn.createList();
+        exploreSpawn = new ShuffleBag(); exploreSpawn.createList(0);
+        midGroundSpawn = new ShuffleBag(); midGroundSpawn.createList(1);
+        bottleNeckSpawn = new ShuffleBag(); bottleNeckSpawn.createList(2);
+        hardCoreSpawn = new ShuffleBag(); hardCoreSpawn.createList(3);
+
+        currBag = exploreSpawn;
+        distAppart = levelPacing[0].distPlatsAppart;
         StartCoroutine(startWait());
     }
     void Update()
@@ -42,7 +57,36 @@ public class LevelGenerator : MonoBehaviour
     
     ObjStats determineObj() //here for reference https://docs.unity3d.com/2019.3/Documentation/Manual/RandomNumbers.html 
     {
-        return wall[bag.getNext()];
+        return wall[currBag.getNext()];
+    }
+
+    public void updateBag()//change the shufflebag using
+    {
+        int pos;
+        Debug.Log("change bag using");
+        if (currBag == hardCoreSpawn)
+            pos = 0;
+        else
+            pos = spawnType.getNext();
+        switch (pos)
+        {
+            case 0:
+                currBag = exploreSpawn;
+                distAppart = levelPacing[pos].distPlatsAppart;
+                break;
+            case 1:
+                currBag = midGroundSpawn;
+                distAppart = levelPacing[pos].distPlatsAppart;
+                break;
+            case 2:
+                currBag = bottleNeckSpawn;
+                distAppart = levelPacing[pos].distPlatsAppart;
+                break;
+            default: 
+                currBag = hardCoreSpawn;
+                distAppart = levelPacing[pos].distPlatsAppart;
+                break;
+        }
     }
 
     float objXPos(ObjStats pos)//gets a random x position to spawn the object in so not give a gap over the same spot as last time
@@ -99,4 +143,7 @@ public class LevelGenerator : MonoBehaviour
         spawnFirst();
 
     }
+
+
+    //leaf spawning now can finally do
 }

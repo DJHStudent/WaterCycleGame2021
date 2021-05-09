@@ -692,7 +692,7 @@ MonoBehaviour:
   - obj: {fileID: 2130799456221520893, guid: 7d6bb0994bcd973418ff9a160392cacf, type: 3}
     minX: -14.5
     maxX: 14.5
-    spawnChance: 1
+  levelPacing: []
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
 --- !u!1 &531552188
@@ -1464,6 +1464,7 @@ GameObject:
   - component: {fileID: 1138240873}
   - component: {fileID: 1138240872}
   - component: {fileID: 1138240871}
+  - component: {fileID: 1138240874}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1549,6 +1550,25 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!95 &1138240874
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138240869}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 21df04a74f5dab74a928f914a33b50a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1156325754
 GameObject:
   m_ObjectHideFlags: 0
