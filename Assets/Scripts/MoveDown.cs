@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveDown : MonoBehaviour
 {
-    protected float speed;
+    protected float speed = 20;
     protected float destroyYPos = -54;
 
     // Update is called once per frame
