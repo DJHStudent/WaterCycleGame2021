@@ -32,6 +32,7 @@ public class MovementManager : MonoBehaviour
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime; //both were at 3
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
         transform.position = pos;
+        
 
         //update the sunbeam's visuals
         sunLineRenderer.SetPosition(1, pos);
@@ -48,6 +49,8 @@ public class MovementManager : MonoBehaviour
         {
             moving = false;
         }
+        
+
     }
 
     void moveRainDrop()//get the raindrop to follow the sunbeam
