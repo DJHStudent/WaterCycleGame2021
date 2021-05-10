@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NextScene : MonoBehaviour
 {
@@ -12,11 +13,12 @@ public class NextScene : MonoBehaviour
     {
         nextLevel = GameManager.levelStats.nextLevel;
         currLevel = GameManager.levelStats.currLevel;
+        Time.timeScale = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x < 0 && !newSceneLoad)
+        if(transform.localScale.x >= 0.99 && !newSceneLoad)
         {
             cam.enabled = true;
             SceneManager.UnloadSceneAsync(currLevel);
@@ -24,8 +26,9 @@ public class NextScene : MonoBehaviour
             cam.enabled = false;
             newSceneLoad = true;
         }
-        if(transform.position.x < -79.8f)
+        if(transform.localScale.x <= 0.01 && newSceneLoad)
         {
+            Time.timeScale = 1;
             SceneManager.UnloadSceneAsync("TransitionScene");
         }
     }
