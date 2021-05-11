@@ -31,9 +31,14 @@ public class MovementManager : MonoBehaviour
         Vector2 pos = transform.position;
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime; //both were at 3
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
-        pos.y += Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime;
-        pos.y += Mathf.Clamp(pos.x, -3.0f, 3.0f);
+        if (GameManager.trackingStats.currScene >= 2)
+        {
+            pos.y += Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime;
+            pos.y = Mathf.Clamp(pos.y, -48.0f, 46.0f);
+        }
         transform.position = pos;
+
+        Debug.Log(Input.GetAxis("Vertical"));
         
         
         
@@ -68,13 +73,12 @@ public class MovementManager : MonoBehaviour
     void moveRainDrop()//get the raindrop to follow the sunbeam
     {
         Vector2 rainDropPos = GameManager.rainDrop.transform.position;
-        float dist = Math.Abs(transform.position.x - rainDropPos.x);//get x dist from one to the other
+        float dist = Vector2.Distance(transform.position, rainDropPos);//get dist from one to the other
 
         if (dist > 0.01)//if not too close to the sunbeam already
         {
-            Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
             float trustReduction = GameManager.levelStats.playerTrust / 100; //how reduced the speed becomes based on the players trust
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, transform.position, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
         updateTrail();
 

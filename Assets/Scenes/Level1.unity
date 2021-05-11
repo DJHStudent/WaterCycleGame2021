@@ -1738,7 +1738,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2030467918}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: back
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   levelSecs: 120
   timeLevelLoaded: 0
   currLevel: Level1
-  nextLevel: Tutorial
+  nextLevel: Level2
 --- !u!114 &2030467920
 MonoBehaviour:
   m_ObjectHideFlags: 0
