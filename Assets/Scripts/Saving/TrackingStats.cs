@@ -6,10 +6,20 @@ public class TrackingStats : MonoBehaviour
 {
     public int currScore, currHeight, currScene;
     public float currTime, currTrust, currSize;
+
+    public static bool loaded = false;
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        resetStats();
+        if (!loaded)
+        {
+            DontDestroyOnLoad(gameObject);
+            loaded = true;
+            resetStats();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void resetStats()
