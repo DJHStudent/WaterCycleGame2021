@@ -23,6 +23,5 @@ public class ButtonClick : MonoBehaviour
     public void setLevel(int levelNum)
     {
         GameObject.Find("SaveManager").GetComponent<TrackingStats>().currScene = levelNum;
-        Debug.Log(GameObject.Find("SaveManager").GetComponent<TrackingStats>().currScene);
     }
 }

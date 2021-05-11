@@ -28,20 +28,24 @@ public class MovementManager : MonoBehaviour
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
     {
-
         Vector3 pos = transform.position;
+        //set the amount to move the object by
         float xSpeed = Input.GetAxis("Horizontal"); float ySpeed = 0;
-        if (GameManager.trackingStats.currScene >= 2)
+        if (GameManager.trackingStats.currScene >= 2)//only allow moving up if on level 2 or greater
             ySpeed = Input.GetAxis("Vertical");
-        Vector3 movePos = new Vector3(xSpeed, ySpeed).normalized;//so not faster on one axis then the other
+        Vector3 movePos = new Vector3(xSpeed, ySpeed);
+        movePos = Vector3.ClampMagnitude(movePos, 1);//so not faster on the diagonal
+        
+        //update the objects position
         pos += movePos * maxSpeed * Time.deltaTime;
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f); //ensures never goes off screen
         pos.y = Mathf.Clamp(pos.y, -48.0f, 46.0f);
-
         transform.position = pos;
 
         //update the sunbeam's visuals
         sunLineRenderer.SetPosition(1, pos);
+
+
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //if currently moving
         {
