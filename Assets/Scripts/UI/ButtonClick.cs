@@ -8,4 +8,20 @@ public class ButtonClick : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void startLevel(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
+    public void back(string scene)
+    {
+        GameManager.trackingStats.resetStats();
+        SceneManager.LoadScene(scene);
+    }
+
+    public void setLevel(int levelNum)
+    {
+        GameObject.Find("SaveManager").GetComponent<TrackingStats>().currScene = levelNum;
+    }
 }

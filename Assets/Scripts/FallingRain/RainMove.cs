@@ -2,25 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RainMove : MonoBehaviour
+public class RainMove : MoveDown
 {
-    float speed = 30;
-    float destroyYPos = -54;
 
-    // Update is called once per frame
     private void Start()
     {
-        speed = Random.Range(20, 40);
+        speed = Random.Range(25, 40);
     }
-    void Update()
+
+    protected override bool whenPause()
     {
-        if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)
-        {
-            transform.position = transform.position + Vector3.down * speed * Time.deltaTime;
-            if (transform.position.y <= destroyYPos)
-            {
-                Destroy(this.gameObject);
-            }
-        }
+        return !GameManager.levelStats.paused || GameManager.levelStats.tutActive;
     }
 }

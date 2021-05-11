@@ -4,7 +4,7 @@ using UnityEngine;
 public class MovementManager : MonoBehaviour
 {
 
-    float maxSpeed = 40;
+    float maxSpeed = 50;
     bool moving = false;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
@@ -28,13 +28,24 @@ public class MovementManager : MonoBehaviour
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
     {
-        Vector2 pos = transform.position;
-        pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
+        Vector3 pos = transform.position;
+        //set the amount to move the object by
+        float xSpeed = Input.GetAxis("Horizontal"); float ySpeed = 0;
+        if (GameManager.trackingStats.currScene >= 2)//only allow moving up if on level 2 or greater
+            ySpeed = Input.GetAxis("Vertical");
+        Vector3 movePos = new Vector3(xSpeed, ySpeed);
+        movePos = Vector3.ClampMagnitude(movePos, 1);//so not faster on the diagonal
+        
+        //update the objects position
+        pos += movePos * maxSpeed * Time.deltaTime;
+        pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f); //ensures never goes off screen
+        pos.y = Mathf.Clamp(pos.y, -48.0f, 46.0f);
         transform.position = pos;
 
         //update the sunbeam's visuals
         sunLineRenderer.SetPosition(1, pos);
+
+
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //if currently moving
         {
@@ -48,18 +59,27 @@ public class MovementManager : MonoBehaviour
         {
             moving = false;
         }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            moving = true;
+        }
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            moving = true;
+        }
+        
+
     }
 
     void moveRainDrop()//get the raindrop to follow the sunbeam
     {
         Vector2 rainDropPos = GameManager.rainDrop.transform.position;
-        float dist = Math.Abs(transform.position.x - rainDropPos.x);//get x dist from one to the other
+        float dist = Vector2.Distance(transform.position, rainDropPos);//get dist from one to the other
 
         if (dist > 0.01)//if not too close to the sunbeam already
         {
-            Vector2 sunBeamPos = new Vector2(transform.position.x, rainDropPos.y);
-            float trustReduction = GameManager.levelStats.playerTrust / 50; //how reduced the speed becomes based on the players trust
-            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, sunBeamPos, maxSpeed * 0.7f * Time.deltaTime * trustReduction); //move towards new position with current speed
+            float trustReduction = GameManager.levelStats.playerTrust / 100; //how reduced the speed becomes based on the players trust
+            GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, transform.position, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
         updateTrail();
 

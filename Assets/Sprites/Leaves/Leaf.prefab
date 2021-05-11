@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3207623342987792654
+--- !u!1 &1075053607075706881
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,64 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3207623342987792655}
-  - component: {fileID: 3207623342987792650}
-  - component: {fileID: 3207623342987792649}
-  - component: {fileID: 3207623342987792648}
+  - component: {fileID: 1075053607075706883}
+  - component: {fileID: 1075053607075706882}
+  - component: {fileID: 1075053607075706884}
+  - component: {fileID: 3728959788646282303}
   m_Layer: 0
-  m_Name: EndPlatform
-  m_TagString: End
+  m_Name: Leaf
+  m_TagString: Dead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3207623342987792655
+--- !u!4 &1075053607075706883
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207623342987792654}
+  m_GameObject: {fileID: 1075053607075706881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1801, y: 5.2, z: -134.71567}
-  m_LocalScale: {x: 110, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &3207623342987792650
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207623342987792654}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.015625, y: 0.015625, z: 0.015625, w: 0.015625}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.95703125, y: 0.95703125}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.95703125, y: 0.95703125}
-  m_EdgeRadius: 0
---- !u!212 &3207623342987792649
+--- !u!212 &1075053607075706882
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207623342987792654}
+  m_GameObject: {fileID: 1075053607075706881}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -99,26 +73,47 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 81008aa88218ea6458cef5c9937c6123, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Sprite: {fileID: 21300000, guid: 8c4a8d02415436a44ad23f40c74c75b4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.95703125, y: 0.95703125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3207623342987792648
+--- !u!114 &1075053607075706884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207623342987792654}
+  m_GameObject: {fileID: 1075053607075706881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28173a3983c36f84a8382d4ae53b4a87, type: 3}
+  m_Script: {fileID: 11500000, guid: 540d780cc7a166844be0d6f1618a836f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3728959788646282303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075053607075706881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde046f4342dc874aa8ee108a7396a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texture:
+  - {fileID: 21300000, guid: aeb886acb00ebcc4ba3f42e1166ad3df, type: 3}
+  - {fileID: 21300000, guid: a05bd9287ac02a74f804cf49a7bb9329, type: 3}
+  - {fileID: 21300000, guid: a98fe065fd65ef147b0eeaf48852496d, type: 3}
+  - {fileID: 21300000, guid: eea65a412f60b1a4ebf4e87c4dbfbd4d, type: 3}
+  - {fileID: 21300000, guid: 0b7a8e2753d08944bbc72affb279ab05, type: 3}
+  - {fileID: 21300000, guid: 3eb8cf62a859a87478c7e01145895eb7, type: 3}
+  - {fileID: 21300000, guid: a843158b13180ef4aa0076ec46deb371, type: 3}
+  - {fileID: 21300000, guid: 8c4a8d02415436a44ad23f40c74c75b4, type: 3}

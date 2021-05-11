@@ -11,6 +11,7 @@ public class SunBeamFall : MonoBehaviour
     public Text msgTxt, keyTxt;
 
     bool lineBottom = false, moveLearn = false;
+    public Animator trustBar;
     void Start()
     {
         GameManager.levelStats.paused = true;
@@ -44,18 +45,19 @@ public class SunBeamFall : MonoBehaviour
         if (GameManager.levelStats.playerTrust >= 100 && !moveLearn)
         {
             keyTxt.gameObject.SetActive(false);
-            msgTxt.text = "Watch Out!!!";
+            msgTxt.text = "Watch Out and\nKeep the Raindrop safe";
+            trustBar.SetTrigger("StopFlash");
             moveLearn = true;
             GameManager.levelGen.enabled = true;
             GameManager.levelStats.paused = false;
             GameManager.levelStats.tutActive = false;
         }
-        //else if(trust >= 50){ move left}   else if(trust >= 100){spawn platforms and avoid them then end level} 
     }
 
     void showCaseText()
     {
         msgTxt.gameObject.SetActive(true);
         keyTxt.gameObject.SetActive(true);
+        trustBar.SetTrigger("Flash");
     }
 }
