@@ -31,7 +31,11 @@ public class MovementManager : MonoBehaviour
         Vector2 pos = transform.position;
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime; //both were at 3
         pos.x = Mathf.Clamp(pos.x, -28.3f, 28.3f);
+        pos.y += Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime;
+        pos.y += Mathf.Clamp(pos.x, -3.0f, 3.0f);
         transform.position = pos;
+        
+        
         
 
         //update the sunbeam's visuals
@@ -48,6 +52,14 @@ public class MovementManager : MonoBehaviour
         else if (moving)
         {
             moving = false;
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            moving = true;
+        }
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            moving = true;
         }
         
 
