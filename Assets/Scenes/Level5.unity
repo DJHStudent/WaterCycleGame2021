@@ -334,9 +334,6 @@ MonoBehaviour:
   startWaitTime: 7
   distAppart: 70
   wall:
-  - obj: {fileID: 8669327148729892448, guid: 2b790507c5a242d4fbd7b778bfb3b514, type: 3}
-    minX: -16
-    maxX: 16
   - obj: {fileID: 1692304193660853668, guid: d12dbf17a2d6c204fb408af403b29a5a, type: 3}
     minX: 0
     maxX: 0
@@ -356,7 +353,7 @@ MonoBehaviour:
   - spawnChance: 1
     leaveSpawnRate: 0.4
     distPlatsAppart: 70
-    platformSpawnChance: 0000000005000000
+    platformSpawnChance: 00000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &192924972
@@ -396,7 +393,7 @@ GameObject:
   - component: {fileID: 300556551}
   - component: {fileID: 300556550}
   m_Layer: 0
-  m_Name: bg2
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1623701, g: 0.18867922, b: 0.1468494, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -735,7 +732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Understory
+  m_Text: Space
 --- !u!222 &408314461
 CanvasRenderer:
   m_ObjectHideFlags: 0

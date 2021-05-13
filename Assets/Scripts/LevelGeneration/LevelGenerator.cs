@@ -20,12 +20,13 @@ public class LevelPacing
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
-    public float startWaitTime, distAppart; 
+    public float startWaitTime;
+    [HideInInspector] public float distAppart; 
     float xDistNotSpawn = 10; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public LevelPacing[] levelPacing; //list of the 4 different difficulty options
     public GameObject end; //the end object
-    public Transform newDist;//last spawned in platforms position;
+    [HideInInspector] public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
     bool changeDist = false; float newDistAppart;

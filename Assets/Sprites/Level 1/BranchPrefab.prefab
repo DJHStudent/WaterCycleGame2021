@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 281752795527284991}
   - component: {fileID: 845164064}
   m_Layer: 0
-  m_Name: WallsPrefab
+  m_Name: BranchPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
