@@ -2094,19 +2094,19 @@ MonoBehaviour:
     maxX: 0
   levelPacing:
   - spawnChance: 2
-    leaveSpawnRate: 2
+    leaveSpawnRate: 2.1
     distPlatsAppart: 70
     platformSpawnChance: 05000000
   - spawnChance: 2
-    leaveSpawnRate: 1.5
+    leaveSpawnRate: 1.65
     distPlatsAppart: 50
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 1.5
+    leaveSpawnRate: 1.65
     distPlatsAppart: 40
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 0.25
+    leaveSpawnRate: 0.4
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
@@ -2179,6 +2179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caf1e57f65f91b43af993b0d2259712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTime: 1.5
   raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
 --- !u!114 &2030467921
 MonoBehaviour:

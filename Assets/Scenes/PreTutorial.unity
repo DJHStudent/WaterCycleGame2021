@@ -1009,7 +1009,7 @@ SpriteRenderer:
   m_Size: {x: 1.12, y: 1.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1905614278
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 2059411765}
   - component: {fileID: 2059411764}
   m_Layer: 0
-  m_Name: Earth (1)
+  m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

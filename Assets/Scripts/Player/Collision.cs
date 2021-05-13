@@ -11,7 +11,7 @@ public class Collision : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Dead"))//if hit platform update trust and play animation
+        if (collision.gameObject.CompareTag("Dead"))//if hit platform update trust and play animation,,  && !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Flashing State")
         {
             GameManager.levelStats.updateTrust(-50);
             playerAnim.SetTrigger("Flashing");

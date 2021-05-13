@@ -17,7 +17,7 @@ public class SunBeamPreMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lineRenderer.SetPosition(1, Vector2.MoveTowards(lineRenderer.GetPosition(1), endPos, Time.deltaTime * 13));
+        lineRenderer.SetPosition(1, Vector2.MoveTowards(lineRenderer.GetPosition(1), endPos, Time.deltaTime * 8));
         if(Vector2.Distance(endPos, lineRenderer.GetPosition(1)) < 0.1)
         {
             SceneManager.LoadScene("Tutorial");

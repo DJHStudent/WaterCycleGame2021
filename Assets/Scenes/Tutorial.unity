@@ -770,9 +770,9 @@ MonoBehaviour:
   paused: 0
   tutActive: 0
   notrust: 0
-  speed: 0
+  speed: 1
   playerTrust: 0
-  playerSize: 8
+  playerSize: 4
   score: 0
   levelSecs: 60
   timeLevelLoaded: 0
@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caf1e57f65f91b43af993b0d2259712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTime: 1.5
   raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
 --- !u!114 &496261111
 MonoBehaviour:
@@ -2462,7 +2463,7 @@ Transform:
   m_GameObject: {fileID: 1857397871}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -35, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1753968988}
   m_RootOrder: 2

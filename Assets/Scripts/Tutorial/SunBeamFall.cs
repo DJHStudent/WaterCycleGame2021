@@ -12,6 +12,7 @@ public class SunBeamFall : MonoBehaviour
 
     bool lineBottom = false, moveLearn = false;
     public Animator trustBar;
+    RainSpawn rainSpawn;
     void Start()
     {
         GameManager.levelStats.paused = true;
@@ -19,6 +20,8 @@ public class SunBeamFall : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         movementManager = GetComponent<MovementManager>();
         endPos.y = -35;
+        rainSpawn = GameObject.Find("SceneManager").GetComponent<RainSpawn>();
+        Instantiate(rainSpawn.raindrop, new Vector2(0, 54), Quaternion.identity);
     }
 
     // Update is called once per frame

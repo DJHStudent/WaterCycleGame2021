@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelStats : MonoBehaviour
 {
     public bool paused = false, tutActive = false, notrust = false;
-    public float speed = 0, playerTrust = 100, playerSize = 8;
+    public float speed = 1, playerTrust = 100, playerSize = 8;
     public int score = 0;
     public float levelSecs = 180; //length of the level in seconds(chose 3 mins so all up 15 mins to do all levels and 5 mins allowed for players failing)
     public float timeLevelLoaded = 0;//length of time the level has been loaded for
@@ -62,7 +62,7 @@ public class LevelStats : MonoBehaviour
     }
     public void setSpeed()//set the games speed exponentially based on the players score
     {
-        speed = Mathf.Clamp(Mathf.Pow(1.01f, 1 + score), 0, 3.5f); //1.005;
+        speed = Mathf.Clamp(Mathf.Pow(1 + score, 0.1f), 0, 3.5f); //1.01;
         //Time.timeScale = speed;
     }
 }

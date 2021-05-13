@@ -78,7 +78,7 @@ public class MovementManager : MonoBehaviour
 
         if (dist > 0.01)//if not too close to the sunbeam already
         {
-            float trustReduction = Mathf.Pow(GameManager.levelStats.playerTrust / 100, 0.5f);//.65 //how reduced the speed becomes based on the players trust
+            float trustReduction = Mathf.Pow(GameManager.levelStats.playerTrust / 100, 0.6f);//.65 //how reduced the speed becomes based on the players trust
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, transform.position, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
         }
         updateTrail();

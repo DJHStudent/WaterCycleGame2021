@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingObject : MonoBehaviour
+public class RainSpawn : MonoBehaviour
 {
     float startY = 54, lastXPos = 30;
-    float spawnTime = 1.5f;
+    [HideInInspector] public float spawnTime = 1.5f;
     public GameObject raindrop;
 
     List<int> xSpawnPoints = new List<int>();
@@ -15,7 +15,7 @@ public class FallingObject : MonoBehaviour
     void Start()
     {
         createSpawnPoints();
-        InvokeRepeating("spawn", spawnTime, spawnTime);
+        StartCoroutine(rainSpawn());
     }
 
     void createSpawnPoints()//ensures only spawns in the same location again if already spawned in all other possible positions first
@@ -44,7 +44,6 @@ public class FallingObject : MonoBehaviour
         return temp;
     }
 
-    // Update is called once per frame
     void spawn()//repeatidly spawn in a raindrop at the top of the level in a random x pos
     {
         if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)
@@ -54,5 +53,13 @@ public class FallingObject : MonoBehaviour
             Vector2 pos = new Vector2(getNext(), startY);
             Instantiate(raindrop, pos, Quaternion.identity);
         }
+    }
+
+    IEnumerator rainSpawn()
+    {
+        yield return new WaitForSeconds(spawnTime);
+        spawn();
+        StartCoroutine(rainSpawn());
+
     }
 }
