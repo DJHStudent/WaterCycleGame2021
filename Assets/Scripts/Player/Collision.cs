@@ -25,6 +25,7 @@ public class Collision : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("End"))//if clear the level
         {
+            //Debug.Log("Height: " + (GameManager.trackingStats.currHeight + Mathf.RoundToInt(GameManager.levelStats.timeLevelLoaded / 5)) + "m");
             GameManager.levelUIManager.endLevel();
         }
 

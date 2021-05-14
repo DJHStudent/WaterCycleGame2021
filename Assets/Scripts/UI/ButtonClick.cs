@@ -24,4 +24,8 @@ public class ButtonClick : MonoBehaviour
     {
         GameObject.Find("SaveManager").GetComponent<TrackingStats>().currScene = levelNum;
     }
+    public void setLevelHeight(int height)
+    {
+        GameObject.Find("SaveManager").GetComponent<TrackingStats>().currHeight = height;
+    }
 }
