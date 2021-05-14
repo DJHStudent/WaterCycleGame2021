@@ -880,7 +880,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 684759636}
   m_OnClick:
     m_PersistentCalls:
@@ -894,7 +894,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tutorial
+          m_StringArgument: Options
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &684759636
@@ -979,6 +979,7 @@ GameObject:
   - component: {fileID: 764298108}
   - component: {fileID: 764298107}
   - component: {fileID: 764298109}
+  - component: {fileID: 764298110}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -1114,6 +1115,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &764298110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764298106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2426504faee1074d8dc233a0de92c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
+  maxHight: 0
+  compTute: 0
+  compLvl1: 0
+  compLvl2: 0
+  compLvl3: 0
+  compLvl4: 0
+  compLvl5: 0
 --- !u!4 &806941604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440652763881178465, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}

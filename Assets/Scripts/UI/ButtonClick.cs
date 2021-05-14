@@ -14,10 +14,11 @@ public class ButtonClick : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void back(string scene)
+    public void back()
     {
+        GameManager.levelStats.saveBestStats();
         GameManager.trackingStats.resetStats();
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void setLevel(int levelNum)

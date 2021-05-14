@@ -598,7 +598,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 51, z: 0}
   - {x: 0, y: -35, z: 0}
@@ -763,7 +763,7 @@ MonoBehaviour:
       - m_Target: {fileID: 29038938}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
         m_MethodName: back
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

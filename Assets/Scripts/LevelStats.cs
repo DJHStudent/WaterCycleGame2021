@@ -65,4 +65,14 @@ public class LevelStats : MonoBehaviour
         speed = Mathf.Clamp(Mathf.Pow(1 + score, 0.1f), 0, 3.5f); //1.01; //actually need further looking into
         //Time.timeScale = speed;
     }
+
+    public void saveBestStats()
+    {
+        if (score * 100 > GameManager.savedInfo.highScore)
+            GameManager.savedInfo.highScore = score * 100;
+
+        int height = GameManager.trackingStats.currHeight + Mathf.RoundToInt(GameManager.levelStats.timeLevelLoaded / 5);
+        if (height > GameManager.savedInfo.maxHight)
+            GameManager.savedInfo.maxHight = height;
+    }
 }

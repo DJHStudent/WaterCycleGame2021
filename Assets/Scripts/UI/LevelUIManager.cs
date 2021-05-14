@@ -13,6 +13,7 @@ public class LevelUIManager : MonoBehaviour
     [HideInInspector]public Animator collectRainAnim;
     public void endLevel()//save the stats from this level and transfer them to the next level once the transition has completed
     {
+        onCompleteLvl();
         GameManager.levelStats.paused = true;
         GameManager.trackingStats.currTime += GameManager.levelStats.timeLevelLoaded;
         GameManager.trackingStats.currScore += GameManager.levelStats.score;
@@ -24,11 +25,44 @@ public class LevelUIManager : MonoBehaviour
         SceneManager.LoadScene("TransitionScene", LoadSceneMode.Additive);
     }
 
+    void onCompleteLvl()
+    {
+        switch (GameManager.trackingStats.currScene)
+        {
+            case 0:
+                if (!GameManager.savedInfo.compTute)
+                    GameManager.savedInfo.compTute = true; 
+                break;
+            case 1: 
+                if(!GameManager.savedInfo.compLvl1)
+                    GameManager.savedInfo.compLvl1 = true; 
+                break;
+            case 2:
+                if (!GameManager.savedInfo.compLvl2)
+                    GameManager.savedInfo.compLvl2 = true; 
+                break;
+            case 3:
+                if (!GameManager.savedInfo.compLvl3)
+                    GameManager.savedInfo.compLvl3 = true; 
+                break;
+            case 4:
+                if (!GameManager.savedInfo.compLvl4)
+                    GameManager.savedInfo.compLvl4 = true; 
+                break;
+            case 5:
+                if (!GameManager.savedInfo.compLvl5)
+                    GameManager.savedInfo.compLvl5 = true; 
+                break;
+            default: break;
+        }
+    }
+
     public void onDeath(string message)
     {
         GameManager.levelStats.notrust = true;
         GameManager.levelStats.paused = true;
         Time.timeScale = 1;
+        GameManager.levelStats.saveBestStats();
 
         deadTxt.gameObject.SetActive(true);
         restartBtn.gameObject.SetActive(true);
@@ -37,7 +71,7 @@ public class LevelUIManager : MonoBehaviour
         finishHeightTxt.gameObject.SetActive(true);
 
         deadTxt.text = message;
-        finishScoreTxt.text = "Score: " + GameManager.levelStats.score;
+        finishScoreTxt.text = "Score: " + GameManager.levelStats.score * 100;
         float totalTime = GameManager.levelStats.timeLevelLoaded + GameManager.trackingStats.currTime;
         GameManager.trackingStats.currTime += GameManager.levelStats.timeLevelLoaded;
         int mins = Mathf.FloorToInt(totalTime / 60);
