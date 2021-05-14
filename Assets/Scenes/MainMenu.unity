@@ -1823,6 +1823,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RainDrop
       objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790749, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790749, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Color.g
+      value: 0.89019614
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790749, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Color.r
+      value: 0.68235296
+      objectReference: {fileID: 0}
     - target: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
       propertyPath: m_RootOrder
       value: 1

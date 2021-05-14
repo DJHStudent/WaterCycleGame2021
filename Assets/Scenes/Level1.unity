@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaf: {fileID: 1075053607075706881, guid: 34e47c9a00357cc4081f3d14645f445c, type: 3}
-  leafSpawnTime: 1.5
+  leafSpawnTime: 1.6
 --- !u!4 &2051693414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
