@@ -46,8 +46,6 @@ public class LevelGenerator : MonoBehaviour
 
         currBag = exploreSpawn;
         distAppart = levelPacing[0].distPlatsAppart;
-        if(GameManager.leavesSpawn)
-            GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
 
         StartCoroutine(startWait());
     }
@@ -130,6 +128,9 @@ public class LevelGenerator : MonoBehaviour
     {
         if (newDist == null)
         {
+            if (GameManager.leavesSpawn) //set the rate of the leaves spawning to the exploration rate
+                GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
+
             ObjStats newObj = determineObj();
             Vector2 pos = new Vector2(objXPos(newObj), spawnY);
             GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);

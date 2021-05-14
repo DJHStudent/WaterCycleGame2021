@@ -11,7 +11,7 @@ public class Collision : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Dead"))//if hit platform update trust and play animation,,  && !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("Flashing State")
+        if (collision.gameObject.CompareTag("Dead"))//if hit platform update trust and play animation
         {
             GameManager.levelStats.updateTrust(-50);
             playerAnim.SetTrigger("Flashing");
@@ -19,6 +19,7 @@ public class Collision : MonoBehaviour
             //Debug.Log(GameManager.levelStats.playerTrust);
             if (GameManager.levelStats.playerTrust <= 0)//if no trust left die
             {
+                Destroy(gameObject.GetComponent<PolygonCollider2D>());
                 GameManager.levelUIManager.onDeath("The Raindrop Left You");
             }
         }

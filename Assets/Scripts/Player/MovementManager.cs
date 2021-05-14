@@ -5,7 +5,6 @@ public class MovementManager : MonoBehaviour
 {
 
     float maxSpeed = 50;
-    bool moving = false;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
     private void Start()
@@ -43,32 +42,8 @@ public class MovementManager : MonoBehaviour
         transform.position = pos;
 
         //update the sunbeam's visuals
+        //pos.y -= 60;
         sunLineRenderer.SetPosition(1, pos);
-
-
-
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) //if currently moving
-        {
-            moving = true;
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
-        {
-            moving = true;
-        }
-        else if (moving)
-        {
-            moving = false;
-        }
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            moving = true;
-        }
-        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            moving = true;
-        }
-        
-
     }
 
     void moveRainDrop()//get the raindrop to follow the sunbeam
