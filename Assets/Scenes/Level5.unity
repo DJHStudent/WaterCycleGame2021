@@ -316,9 +316,11 @@ MonoBehaviour:
   finishTimeTxt: {fileID: 903292778}
   finishHeightTxt: {fileID: 1237666303}
   stageTxt: {fileID: 408314460}
+  collectRaindropInfoTxt: {fileID: 0}
   restartBtn: {fileID: 564952096}
   heightSlider: {fileID: 117838857}
   trustSlider: {fileID: 671334694}
+  collectRainAnim: {fileID: 0}
 --- !u!114 &192924971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,7 +2377,7 @@ LineRenderer:
   - {x: 0, y: -35, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 10
+    widthMultiplier: 30
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2403,7 +2405,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 1, g: 1, b: 1, a: 0.5019608}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2418,7 +2420,7 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 64224
+      atime0: 0
       atime1: 64764
       atime2: 0
       atime3: 0

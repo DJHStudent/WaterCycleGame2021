@@ -15,6 +15,10 @@ public class SunBeamFall : MonoBehaviour
     RainSpawn rainSpawn;
     void Start()
     {
+        GameManager.levelUIManager.collectRainAnim = GameManager.levelUIManager.collectRaindropInfoTxt.gameObject.GetComponent<Animator>();
+        GameManager.levelUIManager.collectRainAnim.speed = 0;
+        GameManager.levelUIManager.collectRaindropInfoTxt.gameObject.SetActive(false);
+
         GameManager.levelStats.paused = true;
         GameManager.levelStats.tutActive = true;
         lineRenderer = GetComponent<LineRenderer>();

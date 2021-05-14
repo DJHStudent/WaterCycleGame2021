@@ -26,7 +26,6 @@ public class Collision : MonoBehaviour
         if (collision.gameObject.CompareTag("End"))//if clear the level
         {
             GameManager.levelUIManager.endLevel();
-            //GameManager.levelUIManager.endLevel("Stage Cleared :)");
         }
 
         if (collision.gameObject.CompareTag("RainDrop"))//if collect a raindrop
@@ -37,6 +36,10 @@ public class Collision : MonoBehaviour
             collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             collision.gameObject.GetComponent<TrailRenderer>().enabled = false;
             collision.gameObject.GetComponent<ParticleSystem>().Play();
+            if(GameManager.trackingStats.currScene == 0)
+            {
+                GameManager.levelUIManager.onCollectRaindrop();
+            }
             //collision.gameObject.transform.GetChild(0).parent = null;
             //Destroy(collision.gameObject);
         }
