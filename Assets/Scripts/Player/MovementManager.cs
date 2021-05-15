@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
+
 public class MovementManager : MonoBehaviour
 {
-
+    Animator anim;
     float maxSpeed = 50;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
@@ -11,6 +12,7 @@ public class MovementManager : MonoBehaviour
     {
         sunLineRenderer = GetComponent<LineRenderer>();
         rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();
+        anim = GameManager.rainDrop.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,12 @@ public class MovementManager : MonoBehaviour
         }
         if (GameManager.levelStats.notrust)
             noTrust();
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                anim.SetTrigger("isLeft");
+            }
+        
     }
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
@@ -56,6 +64,8 @@ public class MovementManager : MonoBehaviour
             float trustReduction = Mathf.Pow(GameManager.levelStats.playerTrust / 100, 0.6f);//.65 //how reduced the speed becomes based on the players trust
             trustReduction = Mathf.Clamp(trustReduction, 0.15f, 1); //so never gets too slow
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, transform.position, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
+
+
         }
         updateTrail();
 
