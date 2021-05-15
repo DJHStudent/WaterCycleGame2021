@@ -15,8 +15,11 @@ public class OptionsChange : MonoBehaviour
         savedInfo = GameObject.Find("SaveManager").GetComponent<SavedInfo>();
         backAudio = GameObject.Find("SaveManager").GetComponent<AudioSource>();
 
-        backSlider.value = backAudio.volume * 100;
+        backSlider.value = savedInfo.backVolume;
         backTxt.text = "" + (int)backSlider.value;
+
+        //backSlider.value = savedInfo.soundEfxVolume * 100;
+        //backTxt.text = "" + (int)backSlider.value;
 
         setHighScore();
     }
@@ -32,12 +35,14 @@ public class OptionsChange : MonoBehaviour
         backTxt.text = "" + (int)backSlider.value;
         backAudio.volume = backSlider.value / 100;
         savedInfo.backVolume = (int)backSlider.value;
+        //savedInfo.saveBackVolum();
     }
 
     public void adjustSoundEfxVolume()
     {
         soundEfxTxt.text = "" + (int)soundefxSlider.value;
         savedInfo.soundEfxVolume = (int)soundefxSlider.value;
+        //savedInfo.savedSoundEfxVolum();
     }
 
 
@@ -53,5 +58,7 @@ public class OptionsChange : MonoBehaviour
         savedInfo.compLvl3 = true;
         savedInfo.compLvl4 = true;
         savedInfo.compLvl5 = true;
+
+        //savedInfo.saveLvlOn();
     }
 }

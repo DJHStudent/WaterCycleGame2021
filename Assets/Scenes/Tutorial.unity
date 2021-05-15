@@ -203,7 +203,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 6.7, y: 0}
-  m_SizeDelta: {x: 333.3, y: 65.019}
+  m_SizeDelta: {x: 333.3, y: 34.761}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &105088609
 MonoBehaviour:
@@ -238,9 +238,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- raindrop amount evaporated
-
-    + raindrop vertical speed'
+  m_Text: + raindrop vertical speed
 --- !u!222 &105088610
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -917,6 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 1.5
   raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
+  tuteSpawn: 0
 --- !u!114 &496261111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,10 +968,10 @@ MonoBehaviour:
   - spawnChance: 1
     leaveSpawnRate: 0
     distPlatsAppart: 85
-    platformSpawnChance: 02000000
+    platformSpawnChance: 01000000
   - spawnChance: 2
     leaveSpawnRate: 0
-    distPlatsAppart: 85
+    distPlatsAppart: 70
     platformSpawnChance: 02000000
   - spawnChance: 1
     leaveSpawnRate: 0
@@ -1694,7 +1693,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 428.4, y: 115}
+  m_SizeDelta: {x: 428.4, y: 160}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1094756896
 MonoBehaviour:

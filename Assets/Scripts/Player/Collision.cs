@@ -37,7 +37,7 @@ public class Collision : MonoBehaviour
             collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             collision.gameObject.GetComponent<TrailRenderer>().enabled = false;
             collision.gameObject.GetComponent<ParticleSystem>().Play();
-            if(GameManager.trackingStats.currScene == 0)
+            if (GameManager.trackingStats.currScene == 0)
             {
                 GameManager.levelUIManager.onCollectRaindrop();
             }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class SunBeamFall : MonoBehaviour
     Vector2 endPos;
     public Text msgTxt, keyTxt;
 
-    bool lineBottom = false, moveLearn = false;
+    bool lineBottom = false, moveLearn = false, collectRainLearn = false;
     public Animator trustBar;
     RainSpawn rainSpawn;
     void Start()
@@ -25,7 +26,7 @@ public class SunBeamFall : MonoBehaviour
         movementManager = GetComponent<MovementManager>();
         endPos.y = -35;
         rainSpawn = GameObject.Find("SceneManager").GetComponent<RainSpawn>();
-        Instantiate(rainSpawn.raindrop, new Vector2(0, 54), Quaternion.identity);
+        //Instantiate(rainSpawn.raindrop, new Vector2(0, 54), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -52,13 +53,26 @@ public class SunBeamFall : MonoBehaviour
         if (GameManager.levelStats.playerTrust >= 100 && !moveLearn)
         {
             keyTxt.gameObject.SetActive(false);
-            msgTxt.text = "Watch Out and\nKeep the Raindrop safe\nDo not let it evaporate";
+            msgTxt.text = "Hurry Collect\nfalling raindrops\nor the raindrop \nwill evaporate";
             trustBar.SetTrigger("StopFlash");
             moveLearn = true;
+            collectRainLearn = true;
+            rainSpawn.tuteSpawn = true;
+            //start raindrops spawning
+        }
+        else if (collectRainLearn)
+        {
+            GameManager.levelStats.updateSize(-Time.deltaTime * 0.25f); //slowly loose mass over time
+        }
+
+        if(GameManager.rainDrop.transform.localScale.x >= 7.9f)
+        {
+            msgTxt.text = "Watch Out and\nKeep the Raindrop safe";
+            GameManager.levelStats.tutActive = false;
+            collectRainLearn = false;
             GameManager.levelGen.enabled = true;
             GameManager.levelGen.initialiseGeneration(); //start generating in platforms
             GameManager.levelStats.paused = false;
-            GameManager.levelStats.tutActive = false;
         }
     }
 

@@ -150,8 +150,11 @@ public class LevelGenerator : MonoBehaviour
                 distAppart = newDistAppart;
                 changeDist = false;
             }
-            GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
-            newDist = gameObject.transform;
+            if (canSpawn) //removes random glitch where both spawn at once(hopefully)
+            {
+                GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
+                newDist = gameObject.transform;
+            }
         }
     }
     public void spawnEnd() //when at the end of the level spawn the end bar so when players collide with it they go to the next level
@@ -164,8 +167,6 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator startWait()//wait x seconds before begining to spawn in the platforms
     {
-        //Debug.Log(startWaitTime / GameManager.levelStats.speed);
-        Debug.Log(GameManager.levelStats.speed);
         yield return new WaitForSeconds(startWaitTime / GameManager.levelStats.speed);
         canSpawn = true;
         spawnFirst();

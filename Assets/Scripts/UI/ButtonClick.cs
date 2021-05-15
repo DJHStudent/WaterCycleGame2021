@@ -18,6 +18,7 @@ public class ButtonClick : MonoBehaviour
     {
         GameManager.levelStats.saveBestStats();
         GameManager.trackingStats.resetStats();
+        GameManager.savedInfo.saveInfo();
         SceneManager.LoadScene("MainMenu");
     }
 

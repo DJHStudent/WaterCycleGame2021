@@ -43,7 +43,7 @@ public class LeavesSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(leafSpawnTime / GameManager.levelStats.speed);
         //spawn leaf
-        if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)
+        if (!GameManager.levelStats.paused)
         {
             Vector2 pos = new Vector2(getNext(), 54);
             Vector3 rot = new Vector3(0, 0, Random.Range(0, 360));

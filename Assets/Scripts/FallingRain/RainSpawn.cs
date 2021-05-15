@@ -7,6 +7,7 @@ public class RainSpawn : MonoBehaviour
     float startY = 54, lastXPos = 30;
     [HideInInspector] public float spawnTime = 1.5f;
     public GameObject raindrop;
+    [HideInInspector] public bool tuteSpawn = false;
 
     List<int> xSpawnPoints = new List<int>();
     int currXPos;
@@ -46,7 +47,7 @@ public class RainSpawn : MonoBehaviour
 
     void spawn()//repeatidly spawn in a raindrop at the top of the level in a random x pos
     {
-        if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive)
+        if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive && tuteSpawn)
         {
             float xPos = 30 * Mathf.PerlinNoise(lastXPos, startY); //Random.Range(-30, 30)
             lastXPos = xPos;
