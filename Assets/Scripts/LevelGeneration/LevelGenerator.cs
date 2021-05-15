@@ -46,7 +46,9 @@ public class LevelGenerator : MonoBehaviour
 
         currBag = exploreSpawn;
         distAppart = levelPacing[0].distPlatsAppart;
-
+    }
+    public void initialiseGeneration()
+    {
         StartCoroutine(startWait());
     }
     void Update()
@@ -162,7 +164,9 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator startWait()//wait x seconds before begining to spawn in the platforms
     {
-        yield return new WaitForSeconds(startWaitTime);
+        //Debug.Log(startWaitTime / GameManager.levelStats.speed);
+        Debug.Log(GameManager.levelStats.speed);
+        yield return new WaitForSeconds(startWaitTime / GameManager.levelStats.speed);
         canSpawn = true;
         spawnFirst();
 

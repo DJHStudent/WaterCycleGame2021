@@ -57,7 +57,7 @@ public class RainSpawn : MonoBehaviour
 
     IEnumerator rainSpawn()
     {
-        yield return new WaitForSeconds(spawnTime);
+        yield return new WaitForSeconds(spawnTime / GameManager.levelStats.speed);
         spawn();
         StartCoroutine(rainSpawn());
 

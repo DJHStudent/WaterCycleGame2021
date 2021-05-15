@@ -18,6 +18,8 @@ public class LevelStats : MonoBehaviour
         updateTrust(-(100 - GameManager.trackingStats.currTrust));
         updateSize(-(8 - GameManager.trackingStats.currSize));
         GameManager.levelUIManager.maxHeight(levelSecs);
+        if(GameManager.trackingStats.currScene > 0) //not on tutorial
+            GameManager.levelGen.initialiseGeneration();//only start generating the level once all values setup
     }
 
     void Update()
@@ -62,8 +64,7 @@ public class LevelStats : MonoBehaviour
     }
     public void setSpeed()//set the games speed exponentially based on the players score
     {
-        speed = Mathf.Clamp(Mathf.Pow(1 + score, 0.1f), 0, 3.5f); //1.01; //actually need further looking into
-        //Time.timeScale = speed;
+        speed = Mathf.Clamp(Mathf.Pow(1 + score, 0.125f), 1, 3.5f);//Mathf.Clamp(Mathf.Pow(1.015f, 1 + score), 0, 3.5f);
     }
 
     public void saveBestStats()

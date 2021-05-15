@@ -1470,7 +1470,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 964854453}
   m_HandleRect: {fileID: 0}
@@ -1555,7 +1555,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Positions:
-  - {x: 0, y: 51, z: 0}
+  - {x: 0, y: 52, z: 0}
   - {x: 0, y: -35, z: 0}
   m_Parameters:
     serializedVersion: 3
@@ -2475,7 +2475,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 197137688}
   m_HandleRect: {fileID: 0}
