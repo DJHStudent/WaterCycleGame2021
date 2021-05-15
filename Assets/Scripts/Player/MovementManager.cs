@@ -26,11 +26,38 @@ public class MovementManager : MonoBehaviour
         if (GameManager.levelStats.notrust)
             noTrust();
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 anim.SetTrigger("isLeft");
             }
-        
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
+            {
+                anim.SetTrigger("isIdle");
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                anim.SetTrigger("isRight");
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            {
+                anim.SetTrigger("isIdle");
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                anim.SetTrigger("isSquish");
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+            {
+                anim.SetTrigger("isIdle");
+            }
+            
+
+
+
+            
+  
     }
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
@@ -74,7 +101,7 @@ public class MovementManager : MonoBehaviour
     void rainLookAt()//get the angle of the sunbeam so looks in direction moving
     {
         float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
-        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir*2);
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,dir*2);
     }
 
     void noTrust()
