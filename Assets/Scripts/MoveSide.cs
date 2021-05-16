@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveSide : MonoBehaviour
 {
     bool direction; //true == left, false == right
-    protected float speed = 5;
+    protected float speed = 15;
     protected float destroyXPos = -54;
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class MoveSide : MonoBehaviour
             {
                 transform.Translate(Vector2.left * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World);
             }
-
+            atEdge();
             if (whenDestroy())
             {
                 Destroy(this.gameObject);
@@ -46,7 +46,25 @@ public class MoveSide : MonoBehaviour
 
         
     }
-
+    void atEdge()
+    {
+        if(transform.position.x >= 27)
+        {
+            Vector2 pos = transform.position;
+            pos.x = 27;
+            transform.position = pos;
+            transform.localScale = new Vector2(-1, 1);
+            direction = true;
+        }
+        else if(transform.position.x <= -27)
+        {
+            Vector2 pos = transform.position;
+            pos.x = -27;
+            transform.position = pos;
+            transform.localScale = new Vector2(1, 1);
+            direction = false;
+        }
+    }
     protected virtual bool whenDestroy()
     {
         return transform.position.x <= destroyXPos;
