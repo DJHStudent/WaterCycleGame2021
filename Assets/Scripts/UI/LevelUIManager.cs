@@ -56,6 +56,11 @@ public class LevelUIManager : MonoBehaviour
 
     public void onDeath(string message)
     {
+        if(GameManager.trackingStats.currScene == 0)
+        {
+            GameObject.Find("msgTxt").SetActive(false);
+        }
+
         GameManager.levelStats.notrust = true;
         GameManager.levelStats.paused = true;
         Time.timeScale = 1;

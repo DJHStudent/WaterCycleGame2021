@@ -80,6 +80,6 @@ public class MovementManager : MonoBehaviour
     void updateTrail()
     {
         rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
-        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
+        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position - GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
     }
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,7 +50,7 @@ public class SunBeamFall : MonoBehaviour
         if (GameManager.levelStats.playerTrust >= 100 && !moveLearn)
         {
             keyTxt.gameObject.SetActive(false);
-            msgTxt.text = "Hurry Collect\nfalling raindrops\nor the raindrop \nwill evaporate";
+            msgTxt.text = "Hurry do no let\nthe raindrop\nevaporate";
             trustBar.SetTrigger("StopFlash");
             moveLearn = true;
             collectRainLearn = true;
