@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
+
 public class MovementManager : MonoBehaviour
 {
-
+    Animator anim;
     float maxSpeed = 50;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
@@ -11,6 +12,7 @@ public class MovementManager : MonoBehaviour
     {
         sunLineRenderer = GetComponent<LineRenderer>();
         rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();
+        anim = GameManager.rainDrop.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,39 @@ public class MovementManager : MonoBehaviour
         }
         if (GameManager.levelStats.notrust)
             noTrust();
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                anim.SetTrigger("isLeft");
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
+            {
+                anim.SetTrigger("isIdle");
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                anim.SetTrigger("isRight");
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            {
+                anim.SetTrigger("isIdle");
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                anim.SetTrigger("isSquish");
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+            {
+                anim.SetTrigger("isIdle");
+            }
+            
+
+
+
+            
+  
     }
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
@@ -56,6 +91,8 @@ public class MovementManager : MonoBehaviour
             float trustReduction = Mathf.Pow(GameManager.levelStats.playerTrust / 100, 0.6f);//.65 //how reduced the speed becomes based on the players trust
             trustReduction = Mathf.Clamp(trustReduction, 0.27f, 1); //so never gets too slow
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, transform.position, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
+
+
         }
         updateTrail();
 
@@ -64,7 +101,7 @@ public class MovementManager : MonoBehaviour
     void rainLookAt()//get the angle of the sunbeam so looks in direction moving
     {
         float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
-        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir*2);
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,dir*2);
     }
 
     void noTrust() //move raindop as falling down away from the sun
