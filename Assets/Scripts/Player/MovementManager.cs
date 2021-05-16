@@ -52,6 +52,17 @@ public class MovementManager : MonoBehaviour
             {
                 anim.SetTrigger("isIdle");
             }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                anim.SetTrigger("isStretch");
+            }
+            else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+            {
+                anim.SetTrigger("isIdle");
+            }
+
+            
             
 
 
