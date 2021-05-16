@@ -2247,9 +2247,6 @@ MonoBehaviour:
   - obj: {fileID: 1904812329371414599, guid: 59b52af8bd45a244c9fbd12269b776bf, type: 3}
     minX: -16
     maxX: 16
-  - obj: {fileID: 1692304193660853668, guid: d12dbf17a2d6c204fb408af403b29a5a, type: 3}
-    minX: 0
-    maxX: 0
   levelPacing:
   - spawnChance: 2
     leaveSpawnRate: 2.1

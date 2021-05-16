@@ -4,51 +4,39 @@ using UnityEngine;
 
 public class MoveSide : MonoBehaviour
 {
-    bool direction; 
-    bool randomBoolean()
-{
-    if (Random.value >= 0.5)
-    {
-        return true;
-    }
-    return false;
-}
+    bool direction; //true == left, false == right
     protected float speed = 5;
     protected float destroyXPos = -54;
 
     // Update is called once per frame
 
-    void start()
+    void Start()
     {
+        direction = randomBoolean();
         Vector2 pos = transform.position;
-        if(direction == true)
+        if(direction)
         {
-            pos.x = 40;
+            pos.x = 32;
+            transform.localScale = new Vector2(-1, 1);
         }
         else
         {
-            pos.x = -40;
+            pos.x = -32;
         }
         transform.position = pos;
-        direction = randomBoolean();
-
- 
-        
-
-        
     }
     protected virtual void Update()
     {
         if (whenPause()) //move at the specified speed until reach level bottom
         {
-            if (direction == true)
-        {
-          transform.Translate(Vector2.right * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World); 
-        }
-        else
-        {
-           transform.Translate(Vector2.left * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World); 
-        }
+            if (!direction)
+            {
+                transform.Translate(Vector2.right * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World);
+            }
+            else
+            {
+                transform.Translate(Vector2.left * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World);
+            }
 
             if (whenDestroy())
             {
@@ -68,6 +56,9 @@ public class MoveSide : MonoBehaviour
     {
         return !GameManager.levelStats.paused;
     }
+    bool randomBoolean()
+    {
+        return Random.value >= 0.5;
+    }
 
-    
 }
