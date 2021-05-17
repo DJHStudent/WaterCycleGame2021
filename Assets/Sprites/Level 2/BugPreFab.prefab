@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28173a3983c36f84a8382d4ae53b4a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForTute: 0
 --- !u!114 &884611810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texture:
   - {fileID: 21300000, guid: 92747cc12c3eb92449bc7cb20db1a4cb, type: 3}
-  - {fileID: 21300000, guid: 6f2e84db35efcc04993abd4502da5c37, type: 3}
-  - {fileID: 21300000, guid: 47d73dabd8037a74489b37dca958c75a, type: 3}
-  - {fileID: 21300000, guid: 5b8848f38189aab4e8c7b87694aa1b02, type: 3}
-  - {fileID: 21300000, guid: 571f1030ada87b145b76608711615ce8, type: 3}
+  - {fileID: 21300000, guid: f9e9d37a420a6c64a8e17387a3629a39, type: 3}
+  - {fileID: 21300000, guid: ab2ca4b85bafb524f86004d6bacee19f, type: 3}
+  - {fileID: 21300000, guid: 2e9a5bf459084f34fbdbceacdb47c370, type: 3}
+  - {fileID: 21300000, guid: 9e41fd3e15bc34643b8abf9ac516b812, type: 3}
