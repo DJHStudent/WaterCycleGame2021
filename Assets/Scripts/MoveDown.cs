@@ -8,7 +8,7 @@ public class MoveDown : MonoBehaviour
     protected float destroyYPos = -54;
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (whenPause()) //move at the specified speed until reach level bottom
         {

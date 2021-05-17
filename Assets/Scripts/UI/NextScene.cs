@@ -23,7 +23,6 @@ public class NextScene : MonoBehaviour
             cam.enabled = true;
             SceneManager.UnloadSceneAsync(currLevel);
             SceneManager.LoadScene(nextLevel, LoadSceneMode.Additive);
-            GameManager.trackingStats.currScene++;
             cam.enabled = false;
             newSceneLoad = true;
         }

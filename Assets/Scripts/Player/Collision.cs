@@ -19,13 +19,14 @@ public class Collision : MonoBehaviour
             //Debug.Log(GameManager.levelStats.playerTrust);
             if (GameManager.levelStats.playerTrust <= 0)//if no trust left die
             {
+                Destroy(gameObject.GetComponent<PolygonCollider2D>());
                 GameManager.levelUIManager.onDeath("The Raindrop Left You");
             }
         }
         if (collision.gameObject.CompareTag("End"))//if clear the level
         {
+            //Debug.Log("Height: " + (GameManager.trackingStats.currHeight + Mathf.RoundToInt(GameManager.levelStats.timeLevelLoaded / 5)) + "m");
             GameManager.levelUIManager.endLevel();
-            //GameManager.levelUIManager.endLevel("Stage Cleared :)");
         }
 
         if (collision.gameObject.CompareTag("RainDrop"))//if collect a raindrop
@@ -36,6 +37,10 @@ public class Collision : MonoBehaviour
             collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             collision.gameObject.GetComponent<TrailRenderer>().enabled = false;
             collision.gameObject.GetComponent<ParticleSystem>().Play();
+            if (GameManager.trackingStats.currScene == 0)
+            {
+                GameManager.levelUIManager.onCollectRaindrop();
+            }
             //collision.gameObject.transform.GetChild(0).parent = null;
             //Destroy(collision.gameObject);
         }

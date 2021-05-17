@@ -20,12 +20,13 @@ public class LevelPacing
 public class LevelGenerator : MonoBehaviour
 {
     protected float spawnY = 54;
-    public float startWaitTime, distAppart; 
+    public float startWaitTime;
+    [HideInInspector] public float distAppart; 
     float xDistNotSpawn = 10; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public LevelPacing[] levelPacing; //list of the 4 different difficulty options
     public GameObject end; //the end object
-    public Transform newDist;//last spawned in platforms position;
+    [HideInInspector] public Transform newDist;//last spawned in platforms position;
 
     protected bool canSpawn = false;//can a platform spawn or not
     bool changeDist = false; float newDistAppart;
@@ -45,9 +46,9 @@ public class LevelGenerator : MonoBehaviour
 
         currBag = exploreSpawn;
         distAppart = levelPacing[0].distPlatsAppart;
-        if(GameManager.leavesSpawn)
-            GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
-
+    }
+    public void initialiseGeneration()
+    {
         StartCoroutine(startWait());
     }
     void Update()
@@ -129,6 +130,9 @@ public class LevelGenerator : MonoBehaviour
     {
         if (newDist == null)
         {
+            if (GameManager.leavesSpawn) //set the rate of the leaves spawning to the exploration rate
+                GameManager.leavesSpawn.leafSpawnTime = levelPacing[0].leaveSpawnRate;
+
             ObjStats newObj = determineObj();
             Vector2 pos = new Vector2(objXPos(newObj), spawnY);
             GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
@@ -146,8 +150,11 @@ public class LevelGenerator : MonoBehaviour
                 distAppart = newDistAppart;
                 changeDist = false;
             }
-            GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
-            newDist = gameObject.transform;
+            if (canSpawn) //removes random glitch where both spawn at once(hopefully)
+            {
+                GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
+                newDist = gameObject.transform;
+            }
         }
     }
     public void spawnEnd() //when at the end of the level spawn the end bar so when players collide with it they go to the next level
@@ -160,7 +167,7 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator startWait()//wait x seconds before begining to spawn in the platforms
     {
-        yield return new WaitForSeconds(startWaitTime);
+        yield return new WaitForSeconds(startWaitTime / GameManager.levelStats.speed);
         canSpawn = true;
         spawnFirst();
 

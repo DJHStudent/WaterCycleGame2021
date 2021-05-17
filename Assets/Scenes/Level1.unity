@@ -872,7 +872,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1544801242}
   m_HandleRect: {fileID: 0}
@@ -1137,7 +1137,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1026e76e177727649bee3fa5b2cf77f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1157,29 +1157,20 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
-  - {x: 0, y: 51, z: 0}
+  - {x: 0, y: 52, z: 0}
   - {x: 0, y: -35, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 10
+    widthMultiplier: 30
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.4
-        inSlope: 0
-        outSlope: 0.6
-        tangentMode: 69
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0.6
+        inSlope: -0
         outSlope: 0.8
         tangentMode: 69
         weightedMode: 0
@@ -1190,8 +1181,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 0.21176471, a: 1}
-      key1: {r: 1, g: 1, b: 0.21176471, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0.5019608}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1206,9 +1197,9 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 23130
+      atime0: 0
       atime1: 65535
-      atime2: 0
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -1218,7 +1209,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 1
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -1527,7 +1518,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 788685956}
   m_HandleRect: {fileID: 0}
@@ -1739,7 +1730,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2030467918}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
         m_MethodName: back
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2094,19 +2085,19 @@ MonoBehaviour:
     maxX: 0
   levelPacing:
   - spawnChance: 2
-    leaveSpawnRate: 2
+    leaveSpawnRate: 2.1
     distPlatsAppart: 70
     platformSpawnChance: 05000000
   - spawnChance: 2
-    leaveSpawnRate: 1.5
+    leaveSpawnRate: 1.65
     distPlatsAppart: 50
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 1.5
+    leaveSpawnRate: 1.65
     distPlatsAppart: 40
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 0.25
+    leaveSpawnRate: 0.35
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
@@ -2129,9 +2120,11 @@ MonoBehaviour:
   finishTimeTxt: {fileID: 590893683}
   finishHeightTxt: {fileID: 1048075648}
   stageTxt: {fileID: 2074851677}
+  collectRaindropInfoTxt: {fileID: 0}
   restartBtn: {fileID: 2094035739}
   heightSlider: {fileID: 1572200069}
   trustSlider: {fileID: 1082036085}
+  collectRainAnim: {fileID: 0}
 --- !u!114 &2030467918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2179,6 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9caf1e57f65f91b43af993b0d2259712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTime: 1.5
   raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
 --- !u!114 &2030467921
 MonoBehaviour:
@@ -2193,7 +2187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaf: {fileID: 1075053607075706881, guid: 34e47c9a00357cc4081f3d14645f445c, type: 3}
-  leafSpawnTime: 0
+  leafSpawnTime: 1.6
 --- !u!4 &2051693414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}

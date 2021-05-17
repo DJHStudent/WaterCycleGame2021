@@ -41,11 +41,14 @@ public class LeavesSpawn : MonoBehaviour
     }
     IEnumerator leaveSpawn() //repeatedly spawn in a leaf in the specified x pos at the top of the map
     {
-        yield return new WaitForSeconds(leafSpawnTime);
+        yield return new WaitForSeconds(leafSpawnTime / GameManager.levelStats.speed);
         //spawn leaf
-        Vector2 pos = new Vector2(getNext(), 54);
-        Vector3 rot = new Vector3(0, 0, Random.Range(0, 360));
-        GameObject currLeaf = Instantiate(leaf, pos, Quaternion.Euler(rot));
+        if (!GameManager.levelStats.paused)
+        {
+            Vector2 pos = new Vector2(getNext(), 54);
+            Vector3 rot = new Vector3(0, 0, Random.Range(0, 360));
+            Instantiate(leaf, pos, Quaternion.Euler(rot));
+        }
         StartCoroutine(leaveSpawn());
     }
 }

@@ -500,8 +500,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483248760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.2, y: -35, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 686911734}
   m_RootOrder: 0
@@ -525,7 +525,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1026e76e177727649bee3fa5b2cf77f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -545,21 +545,21 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Positions:
   - {x: 23.5, y: 31.82, z: 0}
   - {x: 10, y: -35, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 10
+    widthMultiplier: 30
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.4
+        value: 1
         inSlope: 0
-        outSlope: 0.6
+        outSlope: 0
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
@@ -567,7 +567,7 @@ LineRenderer:
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0.6
+        inSlope: -0
         outSlope: 0.8
         tangentMode: 69
         weightedMode: 0
@@ -578,8 +578,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 0.21176471, a: 1}
-      key1: {r: 1, g: 1, b: 0.21176471, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0.5019608}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -594,7 +594,7 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 23130
+      atime0: 0
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -606,7 +606,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 1
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -880,7 +880,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 684759636}
   m_OnClick:
     m_PersistentCalls:
@@ -894,7 +894,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tutorial
+          m_StringArgument: Options
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &684759636
@@ -977,6 +977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764298108}
+  - component: {fileID: 764298110}
   - component: {fileID: 764298107}
   - component: {fileID: 764298109}
   m_Layer: 0
@@ -1114,6 +1115,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &764298110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764298106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2426504faee1074d8dc233a0de92c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
+  maxHight: 0
+  backVolume: 100
+  soundEfxVolume: 100
+  compTute: 0
+  compLvl1: 0
+  compLvl2: 0
+  compLvl3: 0
+  compLvl4: 0
+  compLvl5: 0
 --- !u!4 &806941604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440652763881178465, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
@@ -1398,9 +1421,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a2dcb63b354c9c84dbdcdb8c33d97e57, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8235295, g: 0.058823533, b: 0.058823533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1823,6 +1846,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RainDrop
       objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790749, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790749, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Color.g
+      value: 0.89019614
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790749, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Color.r
+      value: 0.68235296
+      objectReference: {fileID: 0}
     - target: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1892,6 +1927,7 @@ GameObject:
   - component: {fileID: 1890252177}
   - component: {fileID: 1890252180}
   - component: {fileID: 1890252179}
+  - component: {fileID: 1890252178}
   m_Layer: 5
   m_Name: TitleTxt
   m_TagString: Untagged
@@ -1918,6 +1954,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 12.599976}
   m_SizeDelta: {x: 309.42, y: 192.9115}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1890252178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890252176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!114 &1890252179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1931,7 +1982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5775721, g: 0.85392904, b: 0.9811321, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
