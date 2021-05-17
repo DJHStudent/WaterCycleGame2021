@@ -968,7 +968,7 @@ MonoBehaviour:
   - spawnChance: 1
     leaveSpawnRate: 0
     distPlatsAppart: 85
-    platformSpawnChance: 01000000
+    platformSpawnChance: 02000000
   - spawnChance: 2
     leaveSpawnRate: 0
     distPlatsAppart: 70
