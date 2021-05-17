@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -597,7 +597,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: startLevel
+        m_MethodName: onSceneChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -974,7 +974,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1722,7 +1722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2385,7 +2385,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

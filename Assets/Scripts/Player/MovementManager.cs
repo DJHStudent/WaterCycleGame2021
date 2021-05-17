@@ -10,8 +10,15 @@ public class MovementManager : MonoBehaviour
     Collision collision;
 
     bool disolveKeyTxt = false;
+
+    public static bool pauseBegining = false;
     private void Start()
     {
+        if (pauseBegining)
+        {
+            GameManager.levelStats.paused = true;
+            pauseBegining = false;
+        }
         collision = GameManager.rainDrop.GetComponent<Collision>();
         sunLineRenderer = GetComponent<LineRenderer>();
         rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();

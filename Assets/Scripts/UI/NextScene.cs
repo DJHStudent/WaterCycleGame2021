@@ -11,30 +11,43 @@ public class NextScene : MonoBehaviour
     public Camera cam;
     public Text msgTxt;
     public GameObject continueBtn;
+
+    int currScene;
     Animator anim;
     private void Start()
     {
-        nextLevel = GameManager.levelStats.nextLevel;
-        currLevel = GameManager.levelStats.currLevel;
-        GameManager.levelStats.paused = true;
+        MovementManager.pauseBegining = true;
+        if (GameManager.levelStats != null)
+        {
+            nextLevel = GameManager.levelStats.nextLevel;
+            currLevel = GameManager.levelStats.currLevel;
+            GameManager.levelStats.paused = true;
+            currScene = GameManager.trackingStats.currScene;
+        }
+        else
+        {
+            currLevel = "LevelSelect";
+            nextLevel = GameObject.Find("SaveManager").GetComponent<TrackingStats>().loadingScene;
+            currScene = GameObject.Find("SaveManager").GetComponent<TrackingStats>().currScene;
+        }
         Time.timeScale = 0;
         anim = GetComponent<Animator>();
-        switch (GameManager.trackingStats.currScene)
+        switch (currScene)
         {
             case 0:
                 msgTxt.text = "";
                 break;
             case 1:
-                msgTxt.text = "Getting a burst of enery as it leaves the water, it suddenly sees a new danger...";
+                msgTxt.text = "Getting a burst of energy as the raindrop leaves the water, it suddenly sees a new danger...";
                 break;
             case 2:
-                msgTxt.text = "The light of its lover seemed to grow brighter, giving it a power it had not felt before...";
+                msgTxt.text = "As the light of the raindrops lover grows brighter, it sensed a power it had not felt before...";
                 break;
             case 3:
                 msgTxt.text = "Braving further dangers the raindrop continued skyward, feeling a new warmth...";
                 break;
             case 4:
-                msgTxt.text = "Nothing can stand in our way, the raindrop thinks, as sudden tugging begins pushing on the raindrop...";
+                msgTxt.text = "'Nothing can stand in our way', they think, as a sudden tugging begins pushing on the raindrop...";
                 break;
             case 5:
                 msgTxt.text = "The final frontier, the raindrop can feel the embrace of its lover growing ever nearer...";
@@ -66,7 +79,8 @@ public class NextScene : MonoBehaviour
         //cam.enabled = true;
         SceneManager.UnloadSceneAsync(currLevel);
         SceneManager.LoadScene(nextLevel, LoadSceneMode.Additive);
-        GameManager.levelStats.paused = true;
+        if(GameManager.levelStats != null)
+            GameManager.levelStats.paused = true;
         Time.timeScale = 0;
         cam.enabled = false;
         newSceneLoad = true;

@@ -11,7 +11,8 @@ public class ButtonClick : MonoBehaviour
 
     public void startLevel(string scene)
     {
-        SceneManager.LoadScene(scene);
+        GameObject.Find("SaveManager").GetComponent<TrackingStats>().loadingScene = scene;
+        SceneManager.LoadScene("TransitionScene", LoadSceneMode.Additive);
     }
 
     public void back()

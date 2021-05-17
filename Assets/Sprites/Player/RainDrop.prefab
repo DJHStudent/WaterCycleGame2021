@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03b04b3efc0f0448021a20532a8f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takenDamage: 0
 --- !u!60 &2219547841854790751
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -196,8 +197,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 20, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -35, z: 0}
+  - {x: 0, y: -55, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 4
