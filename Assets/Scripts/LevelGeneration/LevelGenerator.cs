@@ -68,42 +68,45 @@ public class LevelGenerator : MonoBehaviour
 
     public void updateBag()//change the shufflebag using
     {
-        int pos;
-        Debug.Log("Changed Bag Using");
-        if (currBag == hardCoreSpawn)
-            pos = 0;
-        else
-            pos = spawnType.getNext();
-        switch (pos)
+        if (canSpawn)
         {
-            case 0:
-                currBag = exploreSpawn;
-                newDistAppart = levelPacing[pos].distPlatsAppart;
-                changeDist = true;
-                if(GameManager.leavesSpawn) //leaves exists as something which can be spawned in
-                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
-                break;
-            case 1:
-                currBag = midGroundSpawn;
-                newDistAppart = levelPacing[pos].distPlatsAppart;
-                changeDist = true;
-                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
-                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
-                break;
-            case 2:
-                currBag = bottleNeckSpawn;
-                newDistAppart = levelPacing[pos].distPlatsAppart;
-                changeDist = true;
-                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
-                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
-                break;
-            default: 
-                currBag = hardCoreSpawn;
-                newDistAppart = levelPacing[pos].distPlatsAppart;
-                changeDist = true;
-                if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
-                    GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
-                break;
+            int pos;
+            Debug.Log("Changed Bag Using");
+            if (currBag == hardCoreSpawn)
+                pos = 0;
+            else
+                pos = spawnType.getNext();
+            switch (pos)
+            {
+                case 0:
+                    currBag = exploreSpawn;
+                    newDistAppart = levelPacing[pos].distPlatsAppart;
+                    changeDist = true;
+                    if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                        GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                    break;
+                case 1:
+                    currBag = midGroundSpawn;
+                    newDistAppart = levelPacing[pos].distPlatsAppart;
+                    changeDist = true;
+                    if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                        GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                    break;
+                case 2:
+                    currBag = bottleNeckSpawn;
+                    newDistAppart = levelPacing[pos].distPlatsAppart;
+                    changeDist = true;
+                    if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                        GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                    break;
+                default:
+                    currBag = hardCoreSpawn;
+                    newDistAppart = levelPacing[pos].distPlatsAppart;
+                    changeDist = true;
+                    if (GameManager.leavesSpawn) //leaves exists as something which can be spawned in
+                        GameManager.leavesSpawn.leafSpawnTime = levelPacing[pos].leaveSpawnRate;
+                    break;
+            }
         }
     }
 
@@ -141,7 +144,7 @@ public class LevelGenerator : MonoBehaviour
     }
     void spawn()//spawn in a new platform so its distAppart from the last platform
     {
-        if (!GameManager.levelStats.paused)
+        if (!GameManager.levelStats.paused && canSpawn)
         {
             ObjStats newObj = determineObj();
             Vector2 pos = new Vector2(objXPos(newObj), newDist.position.y + distAppart);
@@ -150,18 +153,16 @@ public class LevelGenerator : MonoBehaviour
                 distAppart = newDistAppart;
                 changeDist = false;
             }
-            if (canSpawn) //removes random glitch where both spawn at once(hopefully)
-            {
-                GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
-                newDist = gameObject.transform;
-            }
+            GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
+            newDist = gameObject.transform;
         }
     }
     public void spawnEnd() //when at the end of the level spawn the end bar so when players collide with it they go to the next level
     {
         //spawn the end block 70y above the curr block and stop all spawns
         Vector2 pos = new Vector2(0, newDist.position.y + distAppart);
-        Instantiate(end, pos, Quaternion.identity);
+        GameObject gameObject = Instantiate(end, pos, Quaternion.identity);
+        newDist = gameObject.transform;
         canSpawn = false;
     }
 

@@ -60,7 +60,7 @@ public class LevelUIManager : MonoBehaviour
         {
             GameObject.Find("msgTxt").SetActive(false);
         }
-
+        GameManager.rainDrop.GetComponent<Animator>().SetTrigger("isIdle");
         GameManager.levelStats.notrust = true;
         GameManager.levelStats.paused = true;
         Time.timeScale = 1;

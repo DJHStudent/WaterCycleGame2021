@@ -31,13 +31,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2219547841854790748}
-  m_LocalRotation: {x: 0.9659259, y: 0.258819, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -35, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: -30}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2219547841854790749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,13 +77,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2fe634da6d7e28e4ebfbf8ee44ba076d, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: e37ff04daf996164cb308c328ee65919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.998, y: 1.163}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03b04b3efc0f0448021a20532a8f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takenDamage: 0
 --- !u!60 &2219547841854790751
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -139,20 +140,22 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.998, y: 1.163}
+    newSize: {x: 0.998, y: 1.163}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.23652604, y: -0.17545614}
-      - {x: -0.16591133, y: -0.37769848}
-      - {x: 0.0009830338, y: -0.4735121}
-      - {x: 0.16343126, y: -0.3821179}
-      - {x: 0.2404683, y: -0.19401602}
-      - {x: 0.002337204, y: 0.3600632}
+    - - {x: -0.29, y: 0.35}
+      - {x: -0.35, y: 0.1}
+      - {x: -0.25, y: -0.16}
+      - {x: 0, y: -0.43}
+      - {x: 0.27, y: -0.16}
+      - {x: 0.36, y: 0.1}
+      - {x: 0.29, y: 0.35}
+      - {x: 0, y: 0.5}
 --- !u!120 &2219547841854790738
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -194,8 +197,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 20, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -35, z: 0}
+  - {x: 0, y: -55, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 4
@@ -919,7 +922,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -979,7 +982,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 45}
+    m_Rotation: {x: 0, y: 0, z: 225}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0

@@ -52,7 +52,7 @@ public class RainSpawn : MonoBehaviour
             float xPos = 30 * Mathf.PerlinNoise(lastXPos, startY); //Random.Range(-30, 30)
             lastXPos = xPos;
             Vector2 pos = new Vector2(getNext(), startY);
-            Instantiate(raindrop, pos, Quaternion.identity);
+            Instantiate(raindrop, pos, Quaternion.Euler(180, 0, 0));
         }
     }
 

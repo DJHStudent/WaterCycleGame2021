@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -597,7 +597,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: startLevel
+        m_MethodName: onSceneChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -974,7 +974,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 9187763754172723669, guid: 9aaec837145099349bb50a60f1b3ce6f, type: 3}
+  m_Sprite: {fileID: -2837239019114447722, guid: 70e627d43094c4d48a9353abe8e89d23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1722,7 +1722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 9187763754172723669, guid: 9aaec837145099349bb50a60f1b3ce6f, type: 3}
+  m_Sprite: {fileID: -2837239019114447722, guid: 70e627d43094c4d48a9353abe8e89d23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2385,7 +2385,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 575525980}
         m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: onSceneChange
+        m_MethodName: startLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
