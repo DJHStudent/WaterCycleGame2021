@@ -41,13 +41,13 @@ public class NextScene : MonoBehaviour
                 msgTxt.text = "Getting a burst of energy as the raindrop leaves the water, it suddenly sees a new danger...";
                 break;
             case 2:
-                msgTxt.text = "As the light of the raindrops lover grows brighter, it sensed a power it had not felt before...";
+                msgTxt.text = "As the light of the raindrops lover growed brighter, it sensed a power it had not felt before...";
                 break;
             case 3:
                 msgTxt.text = "Braving further dangers the raindrop continued skyward, feeling a new warmth...";
                 break;
             case 4:
-                msgTxt.text = "'Nothing can stand in our way', they think, as a sudden tugging begins pushing on the raindrop...";
+                msgTxt.text = "'Nothing can stand in our way', they both think, as a sudden tugging begins pushing on the raindrop...";
                 break;
             case 5:
                 msgTxt.text = "The final frontier, the raindrop can feel the embrace of its lover growing ever nearer...";
