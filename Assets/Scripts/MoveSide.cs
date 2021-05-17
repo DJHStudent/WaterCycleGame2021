@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveSide : MonoBehaviour
 {
     bool direction; //true == left, false == right
-    protected float speed = 5;
+    protected float speed = 30;
     protected float destroyXPos = -54;
 
     // Update is called once per frame
@@ -13,17 +13,10 @@ public class MoveSide : MonoBehaviour
     void Start()
     {
         direction = randomBoolean();
-        Vector2 pos = transform.position;
         if(direction)
         {
-            pos.x = 32;
             transform.localScale = new Vector2(-1, 1);
         }
-        else
-        {
-            pos.x = -32;
-        }
-        transform.position = pos;
     }
     protected virtual void Update()
     {

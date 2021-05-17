@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MovementManager : MonoBehaviour
 {
-    Animator anim;
+    Animator anim, keyTxtAnim;
     float maxSpeed = 50;
     LineRenderer sunLineRenderer, rainLineRenderer;
 
+    bool disolveKeyTxt = false;
     private void Start()
     {
         sunLineRenderer = GetComponent<LineRenderer>();
         rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();
         anim = GameManager.rainDrop.GetComponent<Animator>();
+
+        if(GameManager.trackingStats.currScene == 2)
+        {
+            keyTxtAnim = GameObject.Find("keyTxt").GetComponent<Animator>();
+        }
     }
 
     // Update is called once per frame
@@ -22,42 +28,12 @@ public class MovementManager : MonoBehaviour
         {
             moveSunBeam();
             moveRainDrop();
+
+            rainDropAnim();
+            disolveTxt();
         }
         if (GameManager.levelStats.notrust)
-            noTrust();
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-            {
-                anim.SetTrigger("isLeft");
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
-            {
-                anim.SetTrigger("isIdle");
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            {
-                anim.SetTrigger("isRight");
-            }
-            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
-            {
-                anim.SetTrigger("isIdle");
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-            {
-                anim.SetTrigger("isSquish");
-            }
-            else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
-            {
-                anim.SetTrigger("isIdle");
-            }
-            
-
-
-
-            
-  
+            noTrust();   
     }
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
@@ -118,5 +94,47 @@ public class MovementManager : MonoBehaviour
     {
         rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
         rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position - GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
+    }
+
+
+    void disolveTxt()
+    {
+        if (!disolveKeyTxt && GameManager.trackingStats.currScene == 2)
+        {
+            if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+            {
+                disolveKeyTxt = true;
+                keyTxtAnim.enabled = true;
+            }
+        }
+    }
+    
+    void rainDropAnim()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            anim.SetTrigger("isLeft");
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
+        {
+            anim.SetTrigger("isIdle");
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            anim.SetTrigger("isRight");
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+        {
+            anim.SetTrigger("isIdle");
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            anim.SetTrigger("isSquish");
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+        {
+            anim.SetTrigger("isIdle");
+        }
     }
 }
