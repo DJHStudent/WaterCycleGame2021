@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveSide : MonoBehaviour
 {
     bool direction; //true == left, false == right
-    protected float speed = 30;
+    protected float speed = 31;
     protected float destroyXPos = -54;
 
     // Update is called once per frame
