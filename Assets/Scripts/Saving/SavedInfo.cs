@@ -16,6 +16,9 @@ public class SavedInfo : MonoBehaviour
     const string saveLvl3 = "lvl3";
     const string saveLvl4 = "lvl4";
     const string saveLvl5 = "lvl5";
+
+    public AudioSource backAudio, soundEfxAudio;
+    public AudioClip damageClip, deadClip, collectClip;
     private void Start()
     {
         loadSave();
@@ -30,11 +33,12 @@ public class SavedInfo : MonoBehaviour
         if (PlayerPrefs.HasKey(savedback))
         {
             backVolume = PlayerPrefs.GetInt(savedback);
-            gameObject.GetComponent<AudioSource>().volume = (float)backVolume / 100;
+            backAudio.volume = (float)backVolume / 100;
         }
         if (PlayerPrefs.HasKey(saveSoundEfx))
         {
             soundEfxVolume = PlayerPrefs.GetInt(saveSoundEfx);
+            soundEfxAudio.volume = (float)soundEfxVolume / 100;
         }
 
         if (PlayerPrefs.HasKey(saveLvl1))
