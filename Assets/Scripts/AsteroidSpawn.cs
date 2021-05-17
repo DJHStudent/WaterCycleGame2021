@@ -65,22 +65,25 @@ public class AsteroidSpawn : MonoBehaviour
 
         if (!GameManager.levelStats.paused)
         {
-            int a = -30;
+
+            int a = -84, s = 1;
             var val = Random.value;
 
             if (val < 0.5f)
             {
-                a = -30;
-
+                a = -84;
+                s = 1;
             }
             else if (val > 0.5f)
             {
-                a = 30;
+                a = 84;
+                s = -1;
             }
             Vector2 pos = new Vector2(a, Random.Range(-45,45));
             Vector3 rot = new Vector3(0, 0, 0);
             GameObject u = Instantiate(ufo, pos, Quaternion.Euler(rot));
-            u.transform.localScale = new Vector3(-a,30,0);
+            Debug.Log("Spaceshipspawned" + pos);
+            u.transform.localScale = new Vector3(30 * s,30,0);
 
 
         }
