@@ -587,6 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTime: 1.5
   raindrop: {fileID: 1440652763881178464, guid: 00dc935c7b505c243a954cf547989fdb, type: 3}
+  tuteSpawn: 0
 --- !u!114 &729866514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,12 +1847,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 36012cc654bc5c64bab4299bc7e507ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4c4180d2a403bd419d480e1a671d014, type: 3}
   m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 28.41094, y: 41.769997}
+  m_Size: {x: 44.103546, y: 52.09}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1865,8 +1866,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321789966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.225476, y: 2.395261, z: 1}
+  m_LocalPosition: {x: 0.1906, y: -0.9532, z: 0}
+  m_LocalScale: {x: 1.4214673, y: 1.9486445, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
