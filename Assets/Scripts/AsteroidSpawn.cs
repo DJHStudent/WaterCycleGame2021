@@ -53,15 +53,7 @@ public class AsteroidSpawn : MonoBehaviour
         {
             int next_x = 0;
             next_x = getNext();
-            Vector2 pos = new Vector2(0, 0);
-            if (next_x == -30 || next_x == 30) {
-                pos.Set(next_x, Random.Range(0, 54));
-
-            }
-            else
-            {
-                pos.Set(next_x, 54);
-            }
+            Vector2 pos = new Vector2(getNext(), 54);
             Vector3 rot = new Vector3(0, 0, Random.Range(0, 360));
             Instantiate(leaf, pos, Quaternion.Euler(rot));
         }
