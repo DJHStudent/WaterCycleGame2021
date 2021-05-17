@@ -3,6 +3,7 @@ using UnityEngine;
 public class Collision : MonoBehaviour
 {
     Animator playerAnim, camAnim;
+    public bool takenDamage = false;
     private void Start()
     {
         playerAnim = GameManager.rainDrop.GetComponent<Animator>();
@@ -11,16 +12,25 @@ public class Collision : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Dead"))//if hit platform update trust and play animation
+        if (collision.gameObject.CompareTag("Dead") && !takenDamage)//if hit platform update trust and play animation
         {
             GameManager.levelStats.updateTrust(-50);
             playerAnim.SetTrigger("Flashing");
             camAnim.SetTrigger("Shake");
+            takenDamage = true;
+            Invoke("damage", .45f);
             //Debug.Log(GameManager.levelStats.playerTrust);
             if (GameManager.levelStats.playerTrust <= 0)//if no trust left die
             {
+                GameManager.savedInfo.soundEfxAudio.clip = GameManager.savedInfo.deadClip;
+                GameManager.savedInfo.soundEfxAudio.Play();
                 Destroy(gameObject.GetComponent<PolygonCollider2D>());
                 GameManager.levelUIManager.onDeath("The Raindrop Left You");
+            }
+            else
+            {
+                GameManager.savedInfo.soundEfxAudio.clip = GameManager.savedInfo.damageClip;
+                GameManager.savedInfo.soundEfxAudio.Play();
             }
         }
         if (collision.gameObject.CompareTag("End"))//if clear the level
@@ -41,8 +51,12 @@ public class Collision : MonoBehaviour
             {
                 GameManager.levelUIManager.onCollectRaindrop();
             }
-            //collision.gameObject.transform.GetChild(0).parent = null;
-            //Destroy(collision.gameObject);
+            GameManager.savedInfo.soundEfxAudio.clip = GameManager.savedInfo.collectClip;
+            GameManager.savedInfo.soundEfxAudio.Play();
         }
+    }
+    void damage()
+    {
+        takenDamage = false;
     }
 }

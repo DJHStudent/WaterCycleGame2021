@@ -50,7 +50,7 @@ public class SunBeamFall : MonoBehaviour
         if (GameManager.levelStats.playerTrust >= 100 && !moveLearn)
         {
             keyTxt.gameObject.SetActive(false);
-            msgTxt.text = "Hurry do no let\nthe raindrop\nevaporate";
+            msgTxt.text = "Hurry do not let\nthe raindrop\nevaporate";
             trustBar.SetTrigger("StopFlash");
             moveLearn = true;
             collectRainLearn = true;
