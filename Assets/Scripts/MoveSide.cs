@@ -24,11 +24,11 @@ public class MoveSide : MonoBehaviour
         {
             if (!direction)
             {
-                transform.Translate(Vector2.right * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World);
+                transform.Translate(Vector2.right * speed * Time.deltaTime, Space.World);
             }
             else
             {
-                transform.Translate(Vector2.left * speed * GameManager.levelStats.speed * Time.deltaTime, Space.World);
+                transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
             }
             atEdge();
             if (whenDestroy())

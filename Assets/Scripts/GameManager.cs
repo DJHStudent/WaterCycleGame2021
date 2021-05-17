@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static LeavesSpawn leavesSpawn;
     void Awake()
     {
-        //Application.targetFrameRate = -1;//-1 means unlimited
+        Application.targetFrameRate = -1;//-1 means unlimited
         Time.timeScale = 1;
         rainDrop = GameObject.Find("RainDrop");
         levelUIManager = GetComponent<LevelUIManager>();

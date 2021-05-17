@@ -7,10 +7,12 @@ public class MovementManager : MonoBehaviour
     Animator anim, keyTxtAnim;
     float maxSpeed = 50;
     LineRenderer sunLineRenderer, rainLineRenderer;
+    Collision collision;
 
     bool disolveKeyTxt = false;
     private void Start()
     {
+        collision = GameManager.rainDrop.GetComponent<Collision>();
         sunLineRenderer = GetComponent<LineRenderer>();
         rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();
         anim = GameManager.rainDrop.GetComponent<Animator>();
@@ -111,30 +113,36 @@ public class MovementManager : MonoBehaviour
     
     void rainDropAnim()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if (!collision.takenDamage) //only adjust if not currently flashing
         {
-            anim.SetTrigger("isLeft");
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
-        {
-            anim.SetTrigger("isIdle");
-        }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                anim.SetTrigger("isLeft");
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
+            {
+                anim.SetTrigger("isIdle");
+            }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            anim.SetTrigger("isRight");
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
-        {
-            anim.SetTrigger("isIdle");
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-            anim.SetTrigger("isSquish");
-        }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
-        {
-            anim.SetTrigger("isIdle");
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                anim.SetTrigger("isRight");
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            {
+                anim.SetTrigger("isIdle");
+            }
+            if (GameManager.trackingStats.currScene >= 2)
+            {
+                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                {
+                    anim.SetTrigger("isSquish");
+                }
+                else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+                {
+                    anim.SetTrigger("isIdle");
+                }
+            }
         }
     }
 }
