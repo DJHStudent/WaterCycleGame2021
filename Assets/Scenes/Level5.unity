@@ -342,7 +342,7 @@ MonoBehaviour:
   - spawnChance: 1
     leaveSpawnRate: 0.4
     distPlatsAppart: 70
-    platformSpawnChance: 00000000
+    platformSpawnChance: 01000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &192924972
@@ -1022,7 +1022,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: Level5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &564952097
