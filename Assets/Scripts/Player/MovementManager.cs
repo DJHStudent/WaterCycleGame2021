@@ -82,7 +82,7 @@ public class MovementManager : MonoBehaviour
 
     void noTrust() //move raindop as falling down away from the sun
     {
-        GameManager.rainDrop.transform.rotation = Quaternion.identity;
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0, 180);
         Vector2 pos = GameManager.rainDrop.transform.position;
         pos.y -= 15 * Time.deltaTime;
         GameManager.rainDrop.transform.position = pos;
@@ -93,7 +93,7 @@ public class MovementManager : MonoBehaviour
     void updateTrail()
     {
         rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
-        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position + GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
+        rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position - GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
     }
 
 
