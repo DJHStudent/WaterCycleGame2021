@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6654309788401103764}
   - component: {fileID: 4358978675068001583}
   - component: {fileID: -2064187328364012550}
-  - component: {fileID: 6735222388922014157}
+  - component: {fileID: 5701970239625282405}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Dead
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6574748794075878456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1344371f8020b4a19939b895b14e64ad, type: 3}
   - {fileID: 21300000, guid: 25dd88621926e476ea6507c24f40113a, type: 3}
   - {fileID: 21300000, guid: db105ac33d22b4654842ceb4790a830d, type: 3}
---- !u!114 &6735222388922014157
+--- !u!114 &5701970239625282405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,6 +122,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6574748794075878456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feabd419551edfb4f905adac3919963e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a52375ff30374dcb9d78a8b5b58a8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

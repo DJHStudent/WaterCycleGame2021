@@ -15,7 +15,7 @@ public class MoveSide : MonoBehaviour
         direction = randomBoolean();
         if(direction)
         {
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = transform.localScale * new Vector2(-1, 1);
         }
     }
     protected virtual void Update()
@@ -46,7 +46,7 @@ public class MoveSide : MonoBehaviour
             Vector2 pos = transform.position;
             pos.x = 27;
             transform.position = pos;
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = transform.localScale * new Vector2(-1, 1);
             direction = true;
         }
         else if(transform.position.x <= -27)
@@ -54,7 +54,7 @@ public class MoveSide : MonoBehaviour
             Vector2 pos = transform.position;
             pos.x = -27;
             transform.position = pos;
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = transform.localScale * new Vector2(-1, 1);
             direction = false;
         }
     }
