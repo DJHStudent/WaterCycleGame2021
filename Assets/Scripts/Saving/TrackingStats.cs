@@ -8,6 +8,8 @@ public class TrackingStats : MonoBehaviour
     public float currTime, currTrust, currSize;
 
     public static bool loaded = false;
+
+    public string loadingScene;
     void Awake()
     {
         if (!loaded)

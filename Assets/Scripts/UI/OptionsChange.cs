@@ -8,18 +8,16 @@ public class OptionsChange : MonoBehaviour
     SavedInfo savedInfo;
 
     public Slider backSlider, soundefxSlider;
-    public AudioSource backAudio, soundfxAudio;
     public Text backTxt, soundEfxTxt, scoreTxt, heightTxt;
     private void Start()
     {
         savedInfo = GameObject.Find("SaveManager").GetComponent<SavedInfo>();
-        backAudio = GameObject.Find("SaveManager").GetComponent<AudioSource>();
 
         backSlider.value = savedInfo.backVolume;
         backTxt.text = "" + (int)backSlider.value;
 
-        //backSlider.value = savedInfo.soundEfxVolume * 100;
-        //backTxt.text = "" + (int)backSlider.value;
+        soundefxSlider.value = savedInfo.soundEfxVolume;
+        soundEfxTxt.text = "" + (int)soundefxSlider.value;
 
         setHighScore();
     }
@@ -33,22 +31,19 @@ public class OptionsChange : MonoBehaviour
     public void adjustBackVolume()
     {
         backTxt.text = "" + (int)backSlider.value;
-        backAudio.volume = backSlider.value / 100;
+        savedInfo.backAudio.volume = backSlider.value / 100;
         savedInfo.backVolume = (int)backSlider.value;
-        //savedInfo.saveBackVolum();
     }
 
     public void adjustSoundEfxVolume()
     {
         soundEfxTxt.text = "" + (int)soundefxSlider.value;
+        savedInfo.soundEfxAudio.volume = soundefxSlider.value / 100;
         savedInfo.soundEfxVolume = (int)soundefxSlider.value;
-        //savedInfo.savedSoundEfxVolum();
+
+        savedInfo.soundEfxAudio.clip = savedInfo.damageClip;
+        savedInfo.soundEfxAudio.Play();
     }
-
-
-
-
-
 
     public void unlockAll()
     {
@@ -58,7 +53,5 @@ public class OptionsChange : MonoBehaviour
         savedInfo.compLvl3 = true;
         savedInfo.compLvl4 = true;
         savedInfo.compLvl5 = true;
-
-        //savedInfo.saveLvlOn();
     }
 }

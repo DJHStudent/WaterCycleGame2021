@@ -1,16 +1,33 @@
 using System;
 using UnityEngine;
 
+
 public class MovementManager : MonoBehaviour
 {
-
+    Animator anim, keyTxtAnim;
     float maxSpeed = 50;
     LineRenderer sunLineRenderer, rainLineRenderer;
+    Collision collision;
 
+    bool disolveKeyTxt = false;
+
+    public static bool pauseBegining = false;
     private void Start()
     {
+        if (pauseBegining)
+        {
+            GameManager.levelStats.paused = true;
+            pauseBegining = false;
+        }
+        collision = GameManager.rainDrop.GetComponent<Collision>();
         sunLineRenderer = GetComponent<LineRenderer>();
         rainLineRenderer = GameManager.rainDrop.GetComponent<LineRenderer>();
+        anim = GameManager.rainDrop.GetComponent<Animator>();
+
+        if(GameManager.trackingStats.currScene == 2)
+        {
+            keyTxtAnim = GameObject.Find("keyTxt").GetComponent<Animator>();
+        }
     }
 
     // Update is called once per frame
@@ -20,9 +37,12 @@ public class MovementManager : MonoBehaviour
         {
             moveSunBeam();
             moveRainDrop();
+
+            rainDropAnim();
+            disolveTxt();
         }
         if (GameManager.levelStats.notrust)
-            noTrust();
+            noTrust();   
     }
 
     void moveSunBeam() //update the sunbeams position based on input given and ensure never go out of level bounds
@@ -56,6 +76,8 @@ public class MovementManager : MonoBehaviour
             float trustReduction = Mathf.Pow(GameManager.levelStats.playerTrust / 100, 0.6f);//.65 //how reduced the speed becomes based on the players trust
             trustReduction = Mathf.Clamp(trustReduction, 0.27f, 1); //so never gets too slow
             GameManager.rainDrop.transform.position = Vector2.MoveTowards(rainDropPos, transform.position, maxSpeed * Time.deltaTime * trustReduction); //move towards new position with current speed
+
+
         }
         updateTrail();
 
@@ -64,12 +86,12 @@ public class MovementManager : MonoBehaviour
     void rainLookAt()//get the angle of the sunbeam so looks in direction moving
     {
         float dir = GameManager.rainDrop.transform.position.x - transform.position.x;
-        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,180+dir*2);
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0,dir*2);
     }
 
     void noTrust() //move raindop as falling down away from the sun
     {
-        GameManager.rainDrop.transform.rotation = Quaternion.identity;
+        GameManager.rainDrop.transform.rotation = Quaternion.Euler(0,0, 180);
         Vector2 pos = GameManager.rainDrop.transform.position;
         pos.y -= 15 * Time.deltaTime;
         GameManager.rainDrop.transform.position = pos;
@@ -81,5 +103,61 @@ public class MovementManager : MonoBehaviour
     {
         rainLineRenderer.SetPosition(0, GameManager.rainDrop.transform.position);
         rainLineRenderer.SetPosition(1, GameManager.rainDrop.transform.position - GameManager.rainDrop.transform.up * (10 + GameManager.levelStats.speed * 2));
+    }
+
+
+    void disolveTxt()
+    {
+        if (!disolveKeyTxt && GameManager.trackingStats.currScene == 2)
+        {
+            if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+            {
+                disolveKeyTxt = true;
+                keyTxtAnim.enabled = true;
+            }
+        }
+    }
+    
+    void rainDropAnim()
+    {
+        if (!collision.takenDamage) //only adjust if not currently flashing
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                anim.SetTrigger("isLeft");
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
+            {
+                anim.SetTrigger("isIdle");
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                anim.SetTrigger("isRight");
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+            {
+                anim.SetTrigger("isIdle");
+            }
+            if (GameManager.trackingStats.currScene >= 2)
+            {
+                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                {
+                    anim.SetTrigger("isSquish");
+                }
+                else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+                {
+                    anim.SetTrigger("isIdle");
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            anim.SetTrigger("isStretch");
+        }
+        else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+        {
+            anim.SetTrigger("isIdle");
+        }
     }
 }
