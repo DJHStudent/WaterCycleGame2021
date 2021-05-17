@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6574748794075878456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6654309788401103764}
+  - component: {fileID: 4358978675068001583}
+  - component: {fileID: -2064187328364012550}
+  - component: {fileID: 5701970239625282405}
+  m_Layer: 0
+  m_Name: Spaceship
+  m_TagString: Dead
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6654309788401103764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574748794075878456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4358978675068001583
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574748794075878456}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 8b0b2d61b9b1f412ea89d7be0483083f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.53, y: 0.27}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &-2064187328364012550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574748794075878456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde046f4342dc874aa8ee108a7396a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texture:
+  - {fileID: 21300000, guid: 8b0b2d61b9b1f412ea89d7be0483083f, type: 3}
+  - {fileID: 21300000, guid: e40391c075a654c7b879bb92f90badc5, type: 3}
+  - {fileID: 21300000, guid: b8f4e5244331e4beda7ba43d1c6005a9, type: 3}
+  - {fileID: 21300000, guid: cb36dd276541b484cb48323acc6c837c, type: 3}
+  - {fileID: 21300000, guid: ec1f949f05c0e4e888e46928fa6134d3, type: 3}
+  - {fileID: 21300000, guid: 73d81b01ccb4a4499a818ebfd1fb664d, type: 3}
+  - {fileID: 21300000, guid: 3b9ddbe2325a94b64a2ccfbe888235cd, type: 3}
+  - {fileID: 21300000, guid: a0fb68db3a55d45ce86e08687ba6999c, type: 3}
+  - {fileID: 21300000, guid: f944e9bb91b8d4489b9cc388ed113138, type: 3}
+  - {fileID: 21300000, guid: 4cf0d4f61e58b46fba24f07765713f6d, type: 3}
+  - {fileID: 21300000, guid: 9276e242c9da94331a1fdffffd2f308b, type: 3}
+  - {fileID: 21300000, guid: 917903af0bb5345eebbfe2986bb06068, type: 3}
+  - {fileID: 21300000, guid: 088b7343d04a9447b9872129b18e5e07, type: 3}
+  - {fileID: 21300000, guid: 1344371f8020b4a19939b895b14e64ad, type: 3}
+  - {fileID: 21300000, guid: 25dd88621926e476ea6507c24f40113a, type: 3}
+  - {fileID: 21300000, guid: db105ac33d22b4654842ceb4790a830d, type: 3}
+--- !u!114 &5701970239625282405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574748794075878456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a52375ff30374dcb9d78a8b5b58a8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

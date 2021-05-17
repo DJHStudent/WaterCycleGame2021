@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 192924966}
   - component: {fileID: 192924969}
   - component: {fileID: 192924968}
-  - component: {fileID: 192924967}
+  - component: {fileID: 192924974}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -247,20 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d2e839059ab22478eb64703007a160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &192924967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192924965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c937d4c763da9447a67ac3c6d10e895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaf: {fileID: 3463591017421583239, guid: c664520f3437448e7aac8d7bbe68bfae, type: 3}
-  leafSpawnTime: 2.1
 --- !u!114 &192924968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +371,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &192924974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192924965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102907ab058d143d5aed1a47eeb19f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaf: {fileID: 3463591017421583239, guid: c664520f3437448e7aac8d7bbe68bfae, type: 3}
+  ufo: {fileID: 6574748794075878456, guid: 20e1148372668410e9b4f695c6b42e5b, type: 3}
+  leafSpawnTime: 2.1
 --- !u!1 &300556549
 GameObject:
   m_ObjectHideFlags: 0
