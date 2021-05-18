@@ -8,7 +8,14 @@ public class blackHole : MonoBehaviour
 
     private void Start()
     {
-        ///
+        Vector2 pos = transform.position;
+        if (Random.value >= 0.5)
+        {
+            pos.x = 30;
+        }
+        else
+            pos.x = -30;
+        transform.position = pos;
     }
     // Update is called once per frame
     void Update()
@@ -35,14 +42,29 @@ public class blackHole : MonoBehaviour
         {
 
             float dist = Mathf.Clamp(maxCheckDist - Vector2.Distance(transform.position, coll.gameObject.transform.position), 0, maxCheckDist);
-            Debug.Log(dist);
             if (dist >= maxCheckDist - 8)
             {
-                Destroy(coll.gameObject);
-                continue;
+                if (coll.gameObject.CompareTag("Player"))
+                {
+                    GameManager.levelStats.updateTrust(-100);
+                    GameManager.savedInfo.soundEfxAudio.clip = GameManager.savedInfo.deadClip;
+                    GameManager.savedInfo.soundEfxAudio.Play();
+                    Destroy(gameObject.GetComponent<PolygonCollider2D>());
+                    GameManager.levelUIManager.onDeath("The Raindrop discovered the singularity");
+                }
+                else
+                {
+                    Destroy(coll.gameObject);
+                    continue;
+                }
             }
             Vector2 dir = transform.position - coll.gameObject.transform.position;
             coll.gameObject.transform.Translate(dir * .05f * dist * Time.deltaTime, Space.World);
         }
+    }
+
+    bool randomBoolean()
+    {
+        return Random.value >= 0.5;
     }
 }
