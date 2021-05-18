@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static TrackingStats trackingStats;
     public static SavedInfo savedInfo;
     public static LeavesSpawn leavesSpawn;
+    public static AsteroidSpawn asteroidSpawn;
     void Awake()
     {
         Application.targetFrameRate = -1;//-1 means unlimited
@@ -24,5 +25,8 @@ public class GameManager : MonoBehaviour
         savedInfo = GameObject.Find("SaveManager").GetComponent<SavedInfo>();
         if (GetComponent<LeavesSpawn>())
             leavesSpawn = GetComponent<LeavesSpawn>();
+
+        if (GetComponent<AsteroidSpawn>())
+            asteroidSpawn = GetComponent<AsteroidSpawn>();
     }
 }

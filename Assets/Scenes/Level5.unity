@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 192924966}
   - component: {fileID: 192924969}
   - component: {fileID: 192924968}
-  - component: {fileID: 192924967}
+  - component: {fileID: 192924974}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -247,20 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d2e839059ab22478eb64703007a160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &192924967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192924965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c937d4c763da9447a67ac3c6d10e895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaf: {fileID: 1671037522415243378, guid: 33d44a88105c3ac468a9ce2a13562007, type: 3}
-  leafSpawnTime: 2.1
 --- !u!114 &192924968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +277,7 @@ MonoBehaviour:
   paused: 0
   tutActive: 0
   notrust: 0
-  speed: 0
+  speed: 1
   playerTrust: 100
   playerSize: 8
   score: 0
@@ -356,7 +342,7 @@ MonoBehaviour:
   - spawnChance: 1
     leaveSpawnRate: 0.4
     distPlatsAppart: 70
-    platformSpawnChance: 00000000
+    platformSpawnChance: 01000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
 --- !u!114 &192924972
@@ -385,6 +371,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &192924974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192924965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102907ab058d143d5aed1a47eeb19f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaf: {fileID: 3463591017421583239, guid: c664520f3437448e7aac8d7bbe68bfae, type: 3}
+  ufo: {fileID: 6574748794075878456, guid: 20e1148372668410e9b4f695c6b42e5b, type: 3}
+  leafSpawnTime: 2.1
 --- !u!1 &300556549
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +443,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 36012cc654bc5c64bab4299bc7e507ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03f19d1fec75e89468fe0ae987f39e02, type: 3}
   m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -462,7 +463,7 @@ Transform:
   m_GameObject: {fileID: 300556549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.225476, y: 2.395261, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1021,7 +1022,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: Level5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &564952097
