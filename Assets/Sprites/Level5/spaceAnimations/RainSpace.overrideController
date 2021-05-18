@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RainSpace
+  m_Controller: {fileID: 9100000, guid: b7f1b60cdb920eb42b6f1cbde6de190f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3c8eafe1110d15d4dbd947c7be8bda95, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d38afb71e8c1910458d669dcb2dbeeeb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 25cfad2f61305774e996936c8967585c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f40cc904f654b9f4cbabe654a23f343d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4e02aee9f7c080b4f86b43ac8c78f5ff, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7310cb9dbc440d3479ad1385f5278652, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 411c39442fd191f408589f1fee2b6392, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 911170198199ca1468e9827b5d8ad938, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 20096b9d7aa21574d88ab22362988e37, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 20096b9d7aa21574d88ab22362988e37, type: 2}

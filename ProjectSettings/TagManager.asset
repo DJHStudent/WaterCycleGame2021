@@ -7,6 +7,8 @@ TagManager:
   - Dead
   - RainDrop
   - End
+  - blackHole
+  - wind
   layers:
   - Default
   - TransparentFX

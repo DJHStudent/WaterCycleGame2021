@@ -5,9 +5,9 @@ using UnityEngine;
 public class RainSpawn : MonoBehaviour
 {
     float startY = 54, lastXPos = 30;
-    [HideInInspector] public float spawnTime = 1.5f;
+    public float spawnTime = 1.5f;
     public GameObject raindrop;
-    [HideInInspector] public bool tuteSpawn = false;
+    public bool tuteSpawn = false;
 
     List<int> xSpawnPoints = new List<int>();
     int currXPos;
@@ -60,6 +60,7 @@ public class RainSpawn : MonoBehaviour
 
     IEnumerator rainSpawn()
     {
+        Debug.Log(GameManager.levelStats.speed);
         yield return new WaitForSeconds(spawnTime / GameManager.levelStats.speed);
         spawn();
         StartCoroutine(rainSpawn());
