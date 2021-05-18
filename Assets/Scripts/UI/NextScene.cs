@@ -52,6 +52,9 @@ public class NextScene : MonoBehaviour
             case 5:
                 msgTxt.text = "The final frontier, the raindrop can feel the embrace of its lover growing ever nearer...";
                 break;
+            case 6:
+                msgTxt.text = "So the end has come, you and the raindrop are now united till the end of time...";
+                break;
         }
         msgTxt.enabled = false;
     }

@@ -61,7 +61,7 @@ public class AsteroidSpawn : MonoBehaviour
     }
     IEnumerator spaceshipSpawn()
     {
-        yield return new WaitForSeconds(2*leafSpawnTime / GameManager.levelStats.speed);
+        yield return new WaitForSeconds(leafSpawnTime / GameManager.levelStats.speed);
 
         if (!GameManager.levelStats.paused)
         {
@@ -80,9 +80,8 @@ public class AsteroidSpawn : MonoBehaviour
                 s = -1;
             }
             Vector2 pos = new Vector2(a, Random.Range(-45,45));
-            Vector3 rot = new Vector3(0, 0, 0);
+            Vector3 rot = new Vector3(0, 0, Random.Range(-30, 30));
             GameObject u = Instantiate(ufo, pos, Quaternion.Euler(rot));
-            Debug.Log("Spaceshipspawned" + pos);
             u.transform.localScale = new Vector3(30 * s,30,0);
 
 
