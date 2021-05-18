@@ -2196,11 +2196,11 @@ MonoBehaviour:
     maxX: 0
   levelPacing:
   - spawnChance: 2
-    leaveSpawnRate: 2.3
+    leaveSpawnRate: 2.6
     distPlatsAppart: 70
     platformSpawnChance: 05000000
   - spawnChance: 2
-    leaveSpawnRate: 1.75
+    leaveSpawnRate: 2.1
     distPlatsAppart: 60
     platformSpawnChance: 05000000
   - spawnChance: 1
@@ -2208,11 +2208,12 @@ MonoBehaviour:
     distPlatsAppart: 50
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 0.44
+    leaveSpawnRate: 0.8
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
+  wind: {fileID: 0}
 --- !u!114 &2030467917
 MonoBehaviour:
   m_ObjectHideFlags: 0
