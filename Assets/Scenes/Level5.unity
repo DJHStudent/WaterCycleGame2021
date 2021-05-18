@@ -348,6 +348,7 @@ MonoBehaviour:
     platformSpawnChance: 0800000003000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
+  wind: {fileID: 0}
 --- !u!114 &192924972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2542,6 +2543,22 @@ PrefabInstance:
     - target: {fileID: 5165196598875809013, guid: 1dc769664107a3c4296f14704a1b168e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165196598875809014, guid: 1dc769664107a3c4296f14704a1b168e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8746356
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165196598875809014, guid: 1dc769664107a3c4296f14704a1b168e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0359999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165196598875809014, guid: 1dc769664107a3c4296f14704a1b168e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6576826321545845833, guid: ae249d2a7e13c984bb6154606ba34188, type: 3}
+    - target: {fileID: 5165196598875809014, guid: 1dc769664107a3c4296f14704a1b168e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5165196598875809015, guid: 1dc769664107a3c4296f14704a1b168e, type: 3}
       propertyPath: m_Name

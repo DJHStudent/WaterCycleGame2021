@@ -603,7 +603,7 @@ MonoBehaviour:
   paused: 0
   tutActive: 0
   notrust: 0
-  speed: 0
+  speed: 1
   playerTrust: 100
   playerSize: 8
   score: 0
@@ -671,6 +671,7 @@ MonoBehaviour:
     platformSpawnChance: 00000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
+  wind: {fileID: 0}
 --- !u!114 &729866517
 MonoBehaviour:
   m_ObjectHideFlags: 0

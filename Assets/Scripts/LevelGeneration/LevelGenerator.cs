@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 //also move leaves so spawns with own script, ensuring can be not enabled if on tutorial
 [System.Serializable]
 public class ObjStats
@@ -27,6 +28,7 @@ public class LevelGenerator : MonoBehaviour
     public LevelPacing[] levelPacing; //list of the 4 different difficulty options
     public GameObject end; //the end object
     [HideInInspector] public Transform newDist;//last spawned in platforms position;
+    public windMove wind;
 
     protected bool canSpawn = false;//can a platform spawn or not
     bool changeDist = false; float newDistAppart;
@@ -46,6 +48,7 @@ public class LevelGenerator : MonoBehaviour
 
         currBag = exploreSpawn;
         distAppart = levelPacing[0].distPlatsAppart;
+
     }
     public void initialiseGeneration()
     {
@@ -152,6 +155,13 @@ public class LevelGenerator : MonoBehaviour
             {
                 distAppart = newDistAppart;
                 changeDist = false;
+            }
+            if (GameManager.trackingStats.currScene == 4)
+            {
+                if (newObj.obj.CompareTag("wind"))
+                {
+                    wind.startWind();
+                }
             }
             GameObject gameObject = Instantiate(newObj.obj, pos, Quaternion.identity);
             newDist = gameObject.transform;
