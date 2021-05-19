@@ -726,15 +726,15 @@ MonoBehaviour:
     distPlatsAppart: 70
     platformSpawnChance: 030000000000000002000000
   - spawnChance: 2
-    leaveSpawnRate: 1.65
+    leaveSpawnRate: 1.8
     distPlatsAppart: 50
     platformSpawnChance: 020000000000000003000000
   - spawnChance: 4
-    leaveSpawnRate: 1.5
+    leaveSpawnRate: 1.7
     distPlatsAppart: 40
     platformSpawnChance: 010000000100000005000000
   - spawnChance: 1
-    leaveSpawnRate: 0.25
+    leaveSpawnRate: 0.7
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
