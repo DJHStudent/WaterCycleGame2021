@@ -47,7 +47,6 @@ public class RainSpawn : MonoBehaviour
 
     void spawn()//repeatidly spawn in a raindrop at the top of the level in a random x pos
     {
-        Debug.Log(GameManager.levelStats.paused);
         if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive && tuteSpawn)
         {
             Debug.Log("spawn");
@@ -60,7 +59,6 @@ public class RainSpawn : MonoBehaviour
 
     IEnumerator rainSpawn()
     {
-        Debug.Log(GameManager.levelStats.speed);
         yield return new WaitForSeconds(spawnTime / GameManager.levelStats.speed);
         spawn();
         StartCoroutine(rainSpawn());
