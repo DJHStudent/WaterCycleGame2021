@@ -2488,6 +2488,7 @@ MonoBehaviour:
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
+  wind: {fileID: 0}
 --- !u!114 &2030467917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,7 +2575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaf: {fileID: 1075053607075706881, guid: 34e47c9a00357cc4081f3d14645f445c, type: 3}
-  leafSpawnTime: 2.1
+  leafSpawnTime: 2.7
 --- !u!4 &2051693414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
