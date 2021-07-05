@@ -343,11 +343,11 @@ MonoBehaviour:
     distPlatsAppart: 40
     platformSpawnChance: 0500000001000000
   - spawnChance: 1
-    leaveSpawnRate: 0.4
+    leaveSpawnRate: 0.25
     distPlatsAppart: 70
     platformSpawnChance: 0800000003000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
-  newDist: {fileID: 0}
+  newDist: {fileID: 2075623195}
   wind: {fileID: 0}
 --- !u!114 &192924972
 MonoBehaviour:
@@ -2452,6 +2452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b26bf500e90d94a81aee6c659f1e20, type: 3}
+--- !u!4 &2075623195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3881808536378505927, guid: 44b26bf500e90d94a81aee6c659f1e20, type: 3}
+  m_PrefabInstance: {fileID: 2075623194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2084371342
 GameObject:
   m_ObjectHideFlags: 0

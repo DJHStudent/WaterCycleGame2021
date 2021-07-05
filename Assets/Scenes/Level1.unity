@@ -2208,7 +2208,7 @@ MonoBehaviour:
     distPlatsAppart: 50
     platformSpawnChance: 05000000
   - spawnChance: 1
-    leaveSpawnRate: 0.44
+    leaveSpawnRate: 1
     distPlatsAppart: 70
     platformSpawnChance: 0000000005000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030467913}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c937d4c763da9447a67ac3c6d10e895, type: 3}
   m_Name: 
