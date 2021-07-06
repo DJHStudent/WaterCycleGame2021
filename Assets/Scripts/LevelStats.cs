@@ -65,6 +65,7 @@ public class LevelStats : MonoBehaviour
     public void setSpeed()//set the games speed exponentially based on the players score
     {
         speed = Mathf.Clamp(Mathf.Pow(1 + score, 0.125f), 1, 3.5f);//Mathf.Clamp(Mathf.Pow(1.015f, 1 + score), 0, 3.5f);
+        Debug.Log(speed);
     }
 
     public void saveBestStats()

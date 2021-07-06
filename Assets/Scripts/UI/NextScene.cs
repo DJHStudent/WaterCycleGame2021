@@ -26,7 +26,7 @@ public class NextScene : MonoBehaviour
         }
         else
         {
-            currLevel = "LevelSelect";
+            currLevel = "StageSelectLake"; //whatever this stat is needs to be updated to be correct
             nextLevel = GameObject.Find("SaveManager").GetComponent<TrackingStats>().loadingScene;
             currScene = GameObject.Find("SaveManager").GetComponent<TrackingStats>().currScene;
         }

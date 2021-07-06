@@ -16,7 +16,7 @@ public class RainSpawn : MonoBehaviour
     void Start()
     {
         createSpawnPoints();
-        StartCoroutine(rainSpawn());
+        //StartCoroutine(rainSpawn()); //issue is that the rain starts spawning before speed etc properly setup to spawn
     }
 
     void createSpawnPoints()//ensures only spawns in the same location again if already spawned in all other possible positions first
@@ -49,7 +49,6 @@ public class RainSpawn : MonoBehaviour
     {
         if (!GameManager.levelStats.paused || GameManager.levelStats.tutActive && tuteSpawn)
         {
-            Debug.Log("spawn");
             float xPos = 30 * Mathf.PerlinNoise(lastXPos, startY); //Random.Range(-30, 30)
             lastXPos = xPos;
             Vector2 pos = new Vector2(getNext(), startY);
@@ -57,8 +56,9 @@ public class RainSpawn : MonoBehaviour
         }
     }
 
-    IEnumerator rainSpawn()
+    public IEnumerator rainSpawn()
     {
+        Debug.Log(GameManager.levelStats.speed);
         yield return new WaitForSeconds(spawnTime / GameManager.levelStats.speed);
         spawn();
         StartCoroutine(rainSpawn());

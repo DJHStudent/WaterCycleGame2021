@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static TrackingStats trackingStats;
     public static SavedInfo savedInfo;
     public static LeavesSpawn leavesSpawn;
+    public static RainSpawn rainSpawn;
     public static AsteroidSpawn asteroidSpawn;
     void Awake()
     {
@@ -24,9 +25,16 @@ public class GameManager : MonoBehaviour
         trackingStats = GameObject.Find("SaveManager").GetComponent<TrackingStats>();
         savedInfo = GameObject.Find("SaveManager").GetComponent<SavedInfo>();
         if (GetComponent<LeavesSpawn>())
-            leavesSpawn = GetComponent<LeavesSpawn>();
+            leavesSpawn = GetComponent<LeavesSpawn>(); 
+        if (GetComponent<RainSpawn>())
+            rainSpawn = GetComponent<RainSpawn>();
 
         if (GetComponent<AsteroidSpawn>())
             asteroidSpawn = GetComponent<AsteroidSpawn>();
+    }
+
+    private void Update()
+    {
+        Debug.Log(levelStats.paused);
     }
 }

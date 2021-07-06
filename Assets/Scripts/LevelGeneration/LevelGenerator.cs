@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 //also move leaves so spawns with own script, ensuring can be not enabled if on tutorial
 [System.Serializable]
 public class ObjStats
@@ -50,9 +48,11 @@ public class LevelGenerator : MonoBehaviour
         distAppart = levelPacing[0].distPlatsAppart;
 
     }
-    public void initialiseGeneration()
+    public void initialiseGeneration() //start all co-routines after the values have all been properly setup
     {
         StartCoroutine(startWait());
+        StartCoroutine(GameManager.rainSpawn.rainSpawn());
+
     }
     void Update()
     {
