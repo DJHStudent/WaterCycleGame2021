@@ -290,26 +290,31 @@ MonoBehaviour:
   startWaitTime: 7
   distAppart: 85
   wall:
-  - obj: {fileID: 2130799456221520893, guid: 7d6bb0994bcd973418ff9a160392cacf, type: 3}
-    minX: -14.5
-    maxX: 14.5
+  - obj: {fileID: 2295807505557722304, guid: c88bcc486ab74e2439ea381adf88db88, type: 3}
+    minX: 10
+    maxX: 20
+    xDistNotSpawn: 0
+  - obj: {fileID: 8613793247750429064, guid: 33f2ad2ded890e14ebd86ddff334735b, type: 3}
+    minX: -20
+    maxX: -10
+    xDistNotSpawn: 0
   levelPacing:
   - spawnChance: 1
     leaveSpawnRate: 0
-    distPlatsAppart: 100
-    platformSpawnChance: 14000000
+    distPlatsAppart: 80
+    platformSpawnChance: 0100000001000000
   - spawnChance: 1
     leaveSpawnRate: 0
-    distPlatsAppart: 100
-    platformSpawnChance: 14000000
+    distPlatsAppart: 80
+    platformSpawnChance: 0100000001000000
   - spawnChance: 1
     leaveSpawnRate: 0
-    distPlatsAppart: 100
-    platformSpawnChance: 14000000
+    distPlatsAppart: 80
+    platformSpawnChance: 0100000001000000
   - spawnChance: 1
     leaveSpawnRate: 0
-    distPlatsAppart: 100
-    platformSpawnChance: 14000000
+    distPlatsAppart: 80
+    platformSpawnChance: 0100000001000000
   end: {fileID: 3207623342987792654, guid: 8312afe347d66344a984b03c507e4762, type: 3}
   newDist: {fileID: 0}
   wind: {fileID: 0}

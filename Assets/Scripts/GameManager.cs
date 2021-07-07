@@ -32,9 +32,4 @@ public class GameManager : MonoBehaviour
         if (GetComponent<AsteroidSpawn>())
             asteroidSpawn = GetComponent<AsteroidSpawn>();
     }
-
-    private void Update()
-    {
-        Debug.Log(levelStats.paused);
-    }
 }

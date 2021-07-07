@@ -714,12 +714,15 @@ MonoBehaviour:
   - obj: {fileID: 4823974997559651178, guid: cef7a58d385d9974cb970623ee1f9bb2, type: 3}
     minX: -16
     maxX: 16
+    xDistNotSpawn: 10
   - obj: {fileID: 1692304193660853668, guid: d12dbf17a2d6c204fb408af403b29a5a, type: 3}
     minX: 0
     maxX: 0
+    xDistNotSpawn: 10
   - obj: {fileID: 8107030882028587444, guid: 33bbd179feaa1c54996620fb80bdac09, type: 3}
     minX: -32
     maxX: 32
+    xDistNotSpawn: 10
   levelPacing:
   - spawnChance: 2
     leaveSpawnRate: 2.1

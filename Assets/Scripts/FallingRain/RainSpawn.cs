@@ -58,7 +58,6 @@ public class RainSpawn : MonoBehaviour
 
     public IEnumerator rainSpawn()
     {
-        Debug.Log(GameManager.levelStats.speed);
         yield return new WaitForSeconds(spawnTime / GameManager.levelStats.speed);
         spawn();
         StartCoroutine(rainSpawn());

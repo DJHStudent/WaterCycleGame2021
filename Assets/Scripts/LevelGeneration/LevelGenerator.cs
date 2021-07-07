@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjStats
 {
     public GameObject obj; // the object spawining in
-    public float minX, maxX; // the objects min/max X pos 
+    public float minX, maxX, xDistNotSpawn; // the objects min/max X pos //the range where the previous gap was where this one cannot spawn in
 }
 
 [System.Serializable]
@@ -21,7 +21,7 @@ public class LevelGenerator : MonoBehaviour
     protected float spawnY = 54;
     public float startWaitTime;
     [HideInInspector] public float distAppart; 
-    float xDistNotSpawn = 10; //distance where the gap occurs where it cannot spawn
+    //float xDistNotSpawn = 10; //distance where the gap occurs where it cannot spawn
     public ObjStats[] wall; //a list of all the possible platforms which can spawn in
     public LevelPacing[] levelPacing; //list of the 4 different difficulty options
     public GameObject end; //the end object
@@ -115,15 +115,16 @@ public class LevelGenerator : MonoBehaviour
 
     float objXPos(ObjStats pos)//gets a random x position to spawn the object in so not give a gap over the same spot as last time
     {
-        if (newDist == null)
+        if (newDist == null || pos.xDistNotSpawn == 0)
             return Random.Range(pos.minX, pos.maxX);
         //ensures the randomly chosen value is not between the gap of the previous one
-        float maxMinVal = newDist.position.x - xDistNotSpawn;
-        float minMaxVal = newDist.position.x + xDistNotSpawn;
-        
+        float maxMinVal = newDist.position.x - pos.xDistNotSpawn;
+        float minMaxVal = newDist.position.x + pos.xDistNotSpawn;
+
         float[] posValues = new float[2];
         posValues[0] = Random.Range(pos.minX, maxMinVal);
         posValues[1] = Random.Range(minMaxVal, pos.maxX);
+        Debug.Log("Min: "+pos.minX+ " "+ posValues[0]+" "+posValues[1]);
         //ensure the value returned is still within the appropriate range
         if (maxMinVal < pos.minX)
             return posValues[1];
