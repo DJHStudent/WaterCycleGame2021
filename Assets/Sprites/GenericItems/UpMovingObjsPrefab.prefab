@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710722027116422192}
   m_Layer: 0
-  m_Name: UpMovingObjs
+  m_Name: UpMovingObjsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,6 +317,10 @@ PrefabInstance:
     - target: {fileID: 2219547841854790748, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
       propertyPath: m_Name
       value: RainDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219547841854790748, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2219547841854790750, guid: 3cc2b858b41b8c64cb98b7956f89e073, type: 3}
       propertyPath: m_RootOrder
