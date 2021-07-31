@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lake/Lake3.unity
     guid: b3c3935c78c48fd4d979fe0b45fc8963
   - enabled: 1
+    path: Assets/Scenes/Lake/Lake4.unity
+    guid: a8dda1eb0c8259a4e80e87ee0d7d9c35
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 9eb8223129dea54428ba8323b85fe572
   - enabled: 1
